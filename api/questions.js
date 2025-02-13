@@ -1,4 +1,4 @@
-// api/questions.js
+// /api/questions.js
 
 const axios = require('axios');
 
