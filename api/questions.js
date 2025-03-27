@@ -1,27 +1,30 @@
-import fetch from 'node-fetch';
+const fetch = require('node-fetch');
 
-export default async function handler(req, res) {
+module.exports = async (req, res) => {
+  // Set CORS headers
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
+  
+  // Handle OPTIONS request for CORS preflight
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+
   try {
-    // Enable CORS
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET');
+    const apiResponse = await fetch('https://the-trivia-api.com/v2/questions?limit=10');
     
-    console.log('Fetching questions from Trivia API...');
-    const response = await fetch('https://the-trivia-api.com/v2/questions?limit=10');
-    
-    if (!response.ok) {
-      throw new Error(`API responded with status ${response.status}`);
+    if (!apiResponse.ok) {
+      throw new Error(`Trivia API responded with ${apiResponse.status}`);
     }
     
-    const data = await response.json();
-    console.log(`Successfully fetched ${data.length} questions`);
-    
+    const data = await apiResponse.json();
     return res.status(200).json(data);
+    
   } catch (error) {
-    console.error('Error in API handler:', error);
+    console.error('API Error:', error);
     return res.status(500).json({
       error: 'Failed to fetch questions',
       details: error.message
     });
   }
-}
+};
