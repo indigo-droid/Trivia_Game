@@ -1,92 +1,147 @@
 // DOM Elements
 const quizContainer = document.getElementById('quiz-container');
-const loadingElement = document.getElementById('loading');
-const questionElement = document.getElementById('question');
-const categoryElement = document.getElementById('category');
-const optionsElement = document.getElementById('options');
-const nextButton = document.getElementById('next-btn');
-const scoreElement = document.getElementById('score');
-
-// Game State
-let currentQuestion = {};
 let questions = [];
 let score = 0;
-let acceptingAnswers = false;
 let currentQuestionIndex = 0;
-const API_URL = '/api/questions'; // Now without .js extension
+let acceptingAnswers = false;
+const API_URL = '/api/questions';
 
-// Initialize Quiz
-async function initQuiz() {
-    try {
-        // Initial UI Setup
-        quizContainer.innerHTML = `
-            <div id="loading" class="loading">Loading questions...</div>
-            <div id="quiz-content" style="display:none;">
-                <div class="category" id="category"></div>
-                <div class="question" id="question"></div>
-                <div class="options" id="options"></div>
-                <button id="next-btn" class="next-btn" disabled>Next Question</button>
-            </div>
-            <div class="score" id="score">Score: 0</div>
-        `;
+// 1. First define ALL functions that will be called by other functions
 
-        // Get fresh DOM references
-        const loadingEl = document.getElementById('loading');
-        const quizContentEl = document.getElementById('quiz-content');
-        
-        // Load questions
-        questions = await fetchQuestions();
-        
-        if (questions && questions.length > 0) {
-            loadingEl.style.display = 'none';
-            quizContentEl.style.display = 'block';
-            startQuiz();
-        } else {
-            throw new Error("No questions received from server");
-        }
-    } catch (error) {
-        console.error("Initialization error:", error);
-        showError(error.message);
-    }
+function updateScore() {
+    const scoreElement = document.getElementById('score');
+    scoreElement.textContent = `Score: ${score}`;
 }
 
-// Fetch Questions with Error Handling
-async function fetchQuestions() {
-    try {
-      console.log('Fetching from:', API_URL);
-      const response = await fetch(API_URL, {
-        headers: {
-          'Accept': 'application/json'
-        }
-      });
-  
-      if (!response.ok) {
-        const errorText = await response.text();
-        throw new Error(errorText || `HTTP error! status: ${response.status}`);
-      }
-  
-      return await response.json();
-      
-    } catch (error) {
-      console.error("Fetch error:", error);
-      throw error; // This will be caught by initQuiz
-    }
-}
-
-// Display Error Message
 function showError(message) {
     quizContainer.innerHTML = `
         <div class="error-message">
             <h3>⚠️ Error Loading Quiz</h3>
             <p>${message}</p>
-            <button class="retry-btn" onclick="window.location.reload()">
-                Try Again
-            </button>
+            <button class="retry-btn" onclick="window.location.reload()">Try Again</button>
         </div>
     `;
 }
 
-// [Rest of your existing quiz functions (showQuestion, selectAnswer, etc.)...]
+// Answer selection handler - DEFINED BEFORE IT'S USED
+function selectAnswer(e) {
+    if (!acceptingAnswers) return;
+    acceptingAnswers = false;
+    
+    const selectedButton = e.target;
+    const correctAnswer = questions[currentQuestionIndex].correctAnswer;
+    
+    // Highlight correct and incorrect answers
+    Array.from(document.getElementById('options').children).forEach(button => {
+        button.disabled = true;
+        if (button.textContent === correctAnswer) {
+            button.classList.add('correct');
+        }
+    });
+    
+    // Check if correct
+    if (selectedButton.textContent === correctAnswer) {
+        selectedButton.classList.add('selected');
+        score++;
+        updateScore();
+    } else {
+        selectedButton.classList.add('incorrect');
+    }
+    
+    document.getElementById('next-btn').disabled = false;
+}
 
-// Start when DOM is ready
-document.addEventListener('DOMContentLoaded', initQuiz);
+function showQuestion() {
+    acceptingAnswers = true;
+    const currentQuestion = questions[currentQuestionIndex];
+    
+    document.getElementById('question').textContent = currentQuestion.question.text;
+    document.getElementById('category').textContent = `Category: ${currentQuestion.category}`;
+    
+    const optionsElement = document.getElementById('options');
+    optionsElement.innerHTML = '';
+    
+    // Combine and shuffle answers
+    const allAnswers = [
+        currentQuestion.correctAnswer,
+        ...currentQuestion.incorrectAnswers
+    ].sort(() => Math.random() - 0.5);
+    
+    // Create answer buttons
+    allAnswers.forEach(answer => {
+        const button = document.createElement('button');
+        button.className = 'option-btn';
+        button.textContent = answer;
+        button.addEventListener('click', selectAnswer); // Now selectAnswer is defined
+        optionsElement.appendChild(button);
+    });
+    
+    document.getElementById('next-btn').disabled = true;
+}
+
+function nextQuestion() {
+    currentQuestionIndex++;
+    if (currentQuestionIndex < questions.length) {
+        showQuestion();
+    } else {
+        endQuiz();
+    }
+}
+
+function endQuiz() {
+    quizContainer.innerHTML = `
+        <div class="quiz-complete">
+            <h2>Quiz Complete!</h2>
+            <p>Your score: ${score}/${questions.length}</p>
+            <button onclick="window.location.reload()">Play Again</button>
+        </div>
+    `;
+}
+
+// 2. Then define API/initialization functions
+
+async function fetchQuestions() {
+    try {
+        const response = await fetch(API_URL);
+        if (!response.ok) throw new Error(`HTTP error! ${response.status}`);
+        const data = await response.json();
+        return data.length ? data : [getFallbackQuestion()];
+    } catch (error) {
+        console.error("Fetch error:", error);
+        return [getFallbackQuestion()];
+    }
+}
+
+function getFallbackQuestion() {
+    return {
+        question: { text: "What is the capital of France?" },
+        correctAnswer: "Paris",
+        incorrectAnswers: ["London", "Berlin", "Madrid"],
+        category: "Geography"
+    };
+}
+
+async function initQuiz() {
+    try {
+        questions = await fetchQuestions();
+        startQuiz();
+    } catch (error) {
+        showError(error.message);
+    }
+}
+
+function startQuiz() {
+    score = 0;
+    currentQuestionIndex = 0;
+    updateScore();
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('quiz-content').style.display = 'block';
+    showQuestion();
+}
+
+// 3. Initialize when DOM loads
+document.addEventListener('DOMContentLoaded', () => {
+    console.log("DOM fully loaded");
+    document.getElementById('next-btn').addEventListener('click', nextQuestion);
+    initQuiz();
+});

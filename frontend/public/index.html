@@ -1,23 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trivia Quiz</title>
-    <link rel="stylesheet" href="/style.css">
+  <title>Trivia Quiz</title>
+  <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <h1>Trivia Quiz Loading...</h1>
     <div id="quiz-container">
-        <!-- Content will be loaded by JavaScript -->
+        <div id="loading">Loading questions...</div>
+        <div id="quiz-content">
+            <div id="category"></div>
+            <div id="question"></div>
+            <div id="options"></div>
+            <button id="next-btn">Next Question</button>
+        </div>
+        <div id="score">Score: 0</div>
     </div>
-    <script src="/script.js"></script>
-    
-    <!-- Debug script -->
-    <script>
-        console.log("HTML loaded successfully");
-        console.log("CSS available:", !!document.querySelector('link[href="/style.css"]'));
-        console.log("JS available:", !!document.querySelector('script[src="/script.js"]'));
-    </script>
+  
+  <!-- Debug script -->
+  <script>
+    console.log("DOM fully loaded");
+    console.log("API URL:", '/api/questions');
+  </script>
+  
+  <script src="/script.js"></script>
 </body>
 </html>

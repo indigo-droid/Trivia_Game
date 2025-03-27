@@ -140,3 +140,76 @@ button:hover {
 .retry-btn:hover {
     background: #b71c1c;
 }
+
+.error-message {
+    color: #d32f2f;
+    background: #ffebee;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    margin: 20px auto;
+    max-width: 500px;
+    border: 1px solid #ef9a9a;
+}
+
+.error-message h3 {
+    margin-top: 0;
+    color: #b71c1c;
+}
+
+.retry-btn {
+    background: #d32f2f;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background 0.3s;
+}
+
+.retry-btn:hover {
+    background: #b71c1c;
+}
+
+#loading {
+    text-align: center;
+    padding: 20px;
+}
+
+#quiz-content {
+    display: none; /* Will be shown when questions load */
+}
+
+.option-btn {
+    display: block;
+    width: 100%;
+    margin: 5px 0;
+    padding: 10px;
+}
+
+.option-btn {
+    display: block;
+    margin: 5px 0;
+    padding: 10px;
+    width: 100%;
+}
+
+.correct {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.incorrect {
+    background-color: #f44336;
+    color: white;
+}
+
+.selected {
+    background-color: #2196F3;
+    color: white;
+}
+
+#next-btn {
+    margin-top: 15px;
+}
