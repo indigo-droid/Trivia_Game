@@ -2,12 +2,12 @@
     "name": "trivia-quiz",
     "version": "1.0.0",
     "scripts": {
-      "dev": "vercel dev"
+        "dev": "vercel dev"
     },
     "dependencies": {
-      "node-fetch": "^3.3.2"
+        "node-fetch": "^3.3.2"
     },
     "devDependencies": {
-      "@vercel/node": "^2.15.3"
+        "@vercel/node": "^2.3.0"
     }
-  }
+}
