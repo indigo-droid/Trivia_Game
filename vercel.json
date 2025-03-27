@@ -5,7 +5,14 @@
       { "src": "api/**/*.js", "use": "@vercel/node" }
     ],
     "routes": [
-      { "src": "/api/(.*)", "dest": "/api/$1" },
-      { "src": "/(.*)", "dest": "/frontend/public/$1" }
+      { 
+        "src": "/api/(.*)", 
+        "dest": "/api/$1",
+        "methods": ["GET"] 
+      },
+      { 
+        "src": "/(.*)", 
+        "dest": "/frontend/public/$1" 
+      }
     ]
   }
