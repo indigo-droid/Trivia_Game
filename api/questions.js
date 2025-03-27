@@ -1,4 +1,3 @@
-// This will be your serverless function
 import fetch from 'node-fetch';
 
 export default async function handler(req, res) {
