@@ -13,7 +13,7 @@ let questions = [];
 let score = 0;
 let acceptingAnswers = false;
 let currentQuestionIndex = 0;
-const API_URL = '/api/questions';
+const API_URL = '/api/questions'; // Now without .js extension
 
 // Initialize Quiz
 async function initQuiz() {

@@ -5,10 +5,10 @@
         "dev": "vercel dev"
     },
     "dependencies": {
-        "node-fetch": "2.6.7"
+        "node-fetch": "^2.7.0"
     },
     "devDependencies": {
         "@vercel/node": "^2.3.0",
-        "vercel": "^41.0.2"
+        "vercel": "^41.4.1"
     }
 }

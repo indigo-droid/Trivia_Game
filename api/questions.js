@@ -1,28 +1,35 @@
+// Use CommonJS syntax for better compatibility with Vercel
 const fetch = require('node-fetch');
 
 module.exports = async (req, res) => {
   try {
-    // First, send headers
+    // Set CORS headers
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Content-Type', 'application/json');
+
+    // Fetch from trivia API
+    const response = await fetch('https://the-trivia-api.com/v2/questions?limit=10');
     
-    // Then fetch data
-    const apiResponse = await fetch('https://the-trivia-api.com/v2/questions?limit=10');
-    
-    if (!apiResponse.ok) {
-      throw new Error(`Trivia API failed with status ${apiResponse.status}`);
+    if (!response.ok) {
+      throw new Error(`API responded with status ${response.status}`);
     }
+
+    const data = await response.json();
     
-    const data = await apiResponse.json();
-    
-    // Finally, send response
+    // Return the data
     return res.status(200).json(data);
-    
+
   } catch (error) {
     console.error('API Error:', error);
-    return res.status(500).json({ 
-      error: 'Failed to fetch questions',
-      details: error.message 
-    });
+    
+    // Fallback questions if API fails
+    const fallbackQuestions = [{
+      question: { text: "What is the capital of France?" },
+      correctAnswer: "Paris",
+      incorrectAnswers: ["London", "Berlin", "Madrid"],
+      category: "Geography"
+    }];
+    
+    return res.status(200).json(fallbackQuestions);
   }
 };
