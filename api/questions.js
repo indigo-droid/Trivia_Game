@@ -1,30 +1,28 @@
 const fetch = require('node-fetch');
 
 module.exports = async (req, res) => {
-  // Set CORS headers
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
-  
-  // Handle OPTIONS request for CORS preflight
-  if (req.method === 'OPTIONS') {
-    return res.status(200).end();
-  }
-
   try {
+    // First, send headers
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Content-Type', 'application/json');
+    
+    // Then fetch data
     const apiResponse = await fetch('https://the-trivia-api.com/v2/questions?limit=10');
     
     if (!apiResponse.ok) {
-      throw new Error(`Trivia API responded with ${apiResponse.status}`);
+      throw new Error(`Trivia API failed with status ${apiResponse.status}`);
     }
     
     const data = await apiResponse.json();
+    
+    // Finally, send response
     return res.status(200).json(data);
     
   } catch (error) {
     console.error('API Error:', error);
-    return res.status(500).json({
+    return res.status(500).json({ 
       error: 'Failed to fetch questions',
-      details: error.message
+      details: error.message 
     });
   }
 };

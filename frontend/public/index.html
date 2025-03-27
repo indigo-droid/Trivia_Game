@@ -4,21 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trivia Quiz</title>
-    <link rel="stylesheet" href="/src/style.css">
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <h1>Trivia Quiz</h1>
-    <div class="quiz-container">
-        <div id="loading" class="loading">Loading questions...</div>
-        <div id="quiz-content" style="display: none;">
-            <div class="category" id="category"></div>
-            <div class="question" id="question"></div>
-            <div class="options" id="options"></div>
-            <button id="next-btn" class="next-btn" disabled>Next Question</button>
-        </div>
-        <div class="score" id="score">Score: 0</div>
+    <h1>Trivia Quiz Loading...</h1>
+    <div id="quiz-container">
+        <!-- Content will be loaded by JavaScript -->
     </div>
-
-    <script src="/src/script.js"></script>
+    <script src="/script.js"></script>
+    
+    <!-- Debug script -->
+    <script>
+        console.log("HTML loaded successfully");
+        console.log("CSS available:", !!document.querySelector('link[href="/style.css"]'));
+        console.log("JS available:", !!document.querySelector('script[src="/script.js"]'));
+    </script>
 </body>
 </html>
