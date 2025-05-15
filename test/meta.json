@@ -1,0 +1,30 @@
+{
+  "byCategory": {
+    "general_knowledge": 491,
+    "geography": 2039,
+    "film_and_tv": 1758,
+    "history": 1029,
+    "society_and_culture": 1254,
+    "music": 1407,
+    "sport_and_leisure": 577,
+    "arts_and_literature": 1167,
+    "food_and_drink": 805,
+    "science": 1241
+  },
+  "byState": {
+    "pending": 4003,
+    "approved": 11768,
+    "rejected": 3141
+  },
+  "byDifficulty": {
+    "hard": 5771,
+    "easy": 1180,
+    "medium": 4817
+  },
+  "byType": {
+    "text_choice": 10622,
+    "image_choice": 1146
+  },
+  "lastCreated": "2024-04-05T17:32:15.264+01:00",
+  "lastReviewed": "2024-04-06T09:55:48.556+01:00"
+}
