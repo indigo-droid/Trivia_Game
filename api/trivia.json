@@ -1,0 +1,216 @@
+[
+  {
+    "category": "film_and_tv",
+    "id": "622a1c347cc59eab6f94fbc2",
+    "correctAnswer": "\"Well, I don’t want to survive. I want to live.\"",
+    "incorrectAnswers": [
+      "\"Nobody puts Baby in a corner.\"",
+      "\"It's alive! It's alive!\"",
+      "\"A martini. Shaken, not stirred.\""
+    ],
+    "question": {
+      "text": "Which of these quotes is from the film '12 Years a Slave'?"
+    },
+    "tags": [
+      "quotes",
+      "film",
+      "film_and_tv"
+    ],
+    "type": "text_choice",
+    "difficulty": "hard",
+    "regions": [],
+    "isNiche": false
+  },
+  {
+    "category": "science",
+    "id": "622a1c3a7cc59eab6f951086",
+    "correctAnswer": "Callisto",
+    "incorrectAnswers": [
+      "Io",
+      "Luna",
+      "Titan"
+    ],
+    "question": {
+      "text": "Which moon is our solar system's most cratered satellite?"
+    },
+    "tags": [
+      "science"
+    ],
+    "type": "text_choice",
+    "difficulty": "hard",
+    "regions": [],
+    "isNiche": false
+  },
+  {
+    "category": "food_and_drink",
+    "id": "622a1c367cc59eab6f950255",
+    "correctAnswer": "Champagne ",
+    "incorrectAnswers": [
+      "Médoc",
+      "Saint-Émilion",
+      "Côtes du Rhône"
+    ],
+    "question": {
+      "text": "Which Famous Wine Region Is Centred On Reims?"
+    },
+    "tags": [
+      "food_and_drink"
+    ],
+    "type": "text_choice",
+    "difficulty": "hard",
+    "regions": [],
+    "isNiche": false
+  },
+  {
+    "category": "geography",
+    "id": "623b579ffd6c701a9211836c",
+    "correctAnswer": "Bulgaria",
+    "incorrectAnswers": [
+      "Guatemala",
+      "Cuba",
+      "Belgium"
+    ],
+    "question": {
+      "text": "In which country would you find the Rila Monastery?"
+    },
+    "tags": [
+      "geography"
+    ],
+    "type": "text_choice",
+    "difficulty": "hard",
+    "regions": [],
+    "isNiche": false
+  },
+  {
+    "category": "music",
+    "id": "63b069354799123c67712f64",
+    "correctAnswer": "Lauryn Hill - The Miseducation of Lauryn Hill",
+    "incorrectAnswers": [
+      "Salt-N-Pepa - Hot, Cool & Vicious",
+      "Missy Elliott - Supa Dupa Fly",
+      "Nicki Minaj - Pink Friday"
+    ],
+    "question": {
+      "text": "Who was the first female rapper to have a solo album certified diamond (10 million sales in the USA) by the RIAA?"
+    },
+    "tags": [
+      "music",
+      "hip_hop",
+      "music_albums"
+    ],
+    "type": "text_choice",
+    "difficulty": "hard",
+    "regions": [],
+    "isNiche": false
+  },
+  {
+    "category": "film_and_tv",
+    "id": "622a1c347cc59eab6f94f936",
+    "correctAnswer": "It's A Wonderful Life",
+    "incorrectAnswers": [
+      "The Manchurian Candidate",
+      "The Pink Panther",
+      "The Birds"
+    ],
+    "question": {
+      "text": "Which film contains the character 'George Bailey'?"
+    },
+    "tags": [
+      "fictitious_characters",
+      "film",
+      "cult_films",
+      "film_and_tv"
+    ],
+    "type": "text_choice",
+    "difficulty": "hard",
+    "regions": [],
+    "isNiche": false
+  },
+  {
+    "category": "music",
+    "id": "622a1c397cc59eab6f950cce",
+    "correctAnswer": "Queen",
+    "incorrectAnswers": [
+      "Level 42",
+      "Deep Purple",
+      "Feeder"
+    ],
+    "question": {
+      "text": "Which British rock band (1970-) released the studio album 'News of the World'?"
+    },
+    "tags": [
+      "music"
+    ],
+    "type": "text_choice",
+    "difficulty": "hard",
+    "regions": [],
+    "isNiche": false
+  },
+  {
+    "category": "music",
+    "id": "6396eb4b6017b1e8e09020cc",
+    "correctAnswer": "The Shaggs",
+    "incorrectAnswers": [
+      "Guns N Roses",
+      "Nirvana",
+      "The Kingsmen"
+    ],
+    "question": {
+      "text": "Which American rock band has hits including ‘My Pal Foot Foot’ and ‘Gimmie Dat Ding’"
+    },
+    "tags": [
+      "music",
+      "\nrock",
+      "songs"
+    ],
+    "type": "text_choice",
+    "difficulty": "hard",
+    "regions": [],
+    "isNiche": false
+  },
+  {
+    "category": "geography",
+    "id": "62602d3a4b176d54800e3c88",
+    "correctAnswer": "Stockholm",
+    "incorrectAnswers": [
+      "Prague",
+      "Barcelona",
+      "Madrid"
+    ],
+    "question": {
+      "text": "Which of these cities is in Sweden?"
+    },
+    "tags": [
+      "cities",
+      "europe",
+      "geography"
+    ],
+    "type": "text_choice",
+    "difficulty": "medium",
+    "regions": [],
+    "isNiche": false
+  },
+  {
+    "category": "film_and_tv",
+    "id": "622a1c377cc59eab6f9507a6",
+    "correctAnswer": "Cate Blanchett",
+    "incorrectAnswers": [
+      "Natalie Portman",
+      "Kate Winslet",
+      "Helen Mirren"
+    ],
+    "question": {
+      "text": "Which actress has played roles including Galadriel in The Lord of the Rings and Hela in Thor: Ragnarok?"
+    },
+    "tags": [
+      "film",
+      "acting",
+      "fantasy",
+      "film_and_tv"
+    ],
+    "type": "text_choice",
+    "difficulty": "medium",
+    "regions": [],
+    "isNiche": false
+  }
+]
