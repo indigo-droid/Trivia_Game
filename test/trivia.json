@@ -1,42 +1,20 @@
 [
   {
-    "category": "arts_and_literature",
-    "id": "646140b54d46e537ca8cd9fc",
-    "correctAnswer": "Robin",
+    "category": "history",
+    "id": "622a1c3d7cc59eab6f951c23",
+    "correctAnswer": "Epilepsy",
     "incorrectAnswers": [
-      "Batman",
-      "Superman",
-      "Spiderman"
+      "Hemophilia",
+      "Asthma",
+      "Narcolepsy"
     ],
     "question": {
-      "text": "In DC comics, What is the secret identity of 'Dick Grayson'?"
+      "text": "From what did Alexander the Great suffer?"
     },
     "tags": [
-      "comics",
-      "dc",
-      "arts_and_literature",
-      "pseudonyms"
-    ],
-    "type": "text_choice",
-    "difficulty": "medium",
-    "regions": [],
-    "isNiche": false
-  },
-  {
-    "category": "arts_and_literature",
-    "id": "622a1c397cc59eab6f950eec",
-    "correctAnswer": "Jack London",
-    "incorrectAnswers": [
-      "Edgar Rice Burroughs",
-      "James Fenimore Cooper",
-      "Frederik Pohl"
-    ],
-    "question": {
-      "text": "Which author wrote 'White Fang'?"
-    },
-    "tags": [
-      "literature",
-      "arts_and_literature"
+      "people",
+      "medicine",
+      "history"
     ],
     "type": "text_choice",
     "difficulty": "hard",
@@ -44,136 +22,63 @@
     "isNiche": false
   },
   {
-    "category": "science",
-    "id": "648891864cd3f064f443dc30",
-    "correctAnswer": "Earth",
+    "category": "history",
+    "id": "622a1c3c7cc59eab6f95188d",
+    "correctAnswer": "The Colossus",
     "incorrectAnswers": [
-      "Wood",
-      "Metal",
-      "Rock"
+      "The Zeus",
+      "The Lighthouse",
+      "The Mausoleum"
     ],
     "question": {
-      "text": "What type of material is loam?"
+      "text": "What wonder stood 32m high in Rhodes harbour?"
     },
     "tags": [
-      "geology",
-      "materials",
+      "ancient_greece",
+      "the_ancient_world",
+      "history"
+    ],
+    "type": "text_choice",
+    "difficulty": "medium",
+    "regions": [],
+    "isNiche": false
+  },
+  {
+    "category": "science",
+    "id": "622a1c377cc59eab6f9504d7",
+    "correctAnswer": "birds",
+    "incorrectAnswers": [
+      "myths",
+      "the attribute (of a word) of being self descriptive",
+      "the atmosphere"
+    ],
+    "question": {
+      "text": "What is Ornithology the study of?"
+    },
+    "tags": [
       "science"
     ],
     "type": "text_choice",
-    "difficulty": "medium",
-    "regions": [],
-    "isNiche": false
-  },
-  {
-    "category": "society_and_culture",
-    "id": "622a1c3b7cc59eab6f951752",
-    "correctAnswer": "Marc Bolan",
-    "incorrectAnswers": [
-      "John Lennon",
-      "Jeff Buckley",
-      "Jimi Hendrix"
-    ],
-    "question": {
-      "text": "Which rockstar died when the Mini driven by his girlfriend crashed into a tree?"
-    },
-    "tags": [
-      "society_and_culture",
-      "people",
-      "musicians",
-      "music",
-      "rock_music"
-    ],
-    "type": "text_choice",
-    "difficulty": "medium",
-    "regions": [],
-    "isNiche": false
-  },
-  {
-    "category": "science",
-    "id": "63adbd7704c68cc1e14b8e4a",
-    "correctAnswer": "Pine Tree",
-    "incorrectAnswers": [
-      "Oak Tree",
-      "Maple Tree",
-      "Birch Tree"
-    ],
-    "question": {
-      "text": "Which type of tree is known for its hard wood and conical shape?"
-    },
-    "tags": [
-      "science",
-      "trees",
-      "nature",
-      "plants"
-    ],
-    "type": "text_choice",
-    "difficulty": "medium",
-    "regions": [],
-    "isNiche": false
-  },
-  {
-    "category": "society_and_culture",
-    "id": "622a1c357cc59eab6f94fca1",
-    "correctAnswer": "Niger–Congo",
-    "incorrectAnswers": [
-      "Dravidian",
-      "Austronesian",
-      "Koreanic"
-    ],
-    "question": {
-      "text": "The language 'Rundi' belongs to which language family?"
-    },
-    "tags": [
-      "language",
-      "society_and_culture"
-    ],
-    "type": "text_choice",
     "difficulty": "hard",
     "regions": [],
     "isNiche": false
   },
   {
-    "category": "film_and_tv",
-    "id": "62573f419da29df7b05f7390",
-    "correctAnswer": "It's a Wonderful Life",
+    "category": "history",
+    "id": "622a1c3c7cc59eab6f9517c7",
+    "correctAnswer": "Captain Vancouver",
     "incorrectAnswers": [
-      "WALL·E",
-      "Ratatouille",
-      "Psycho"
+      "Captain Alaska",
+      "Captain Washington",
+      "Captain Canada"
     ],
     "question": {
-      "text": "Name the movie that matches the following plot summary: 'An angel is sent to help a man by showing him what life would have been like if he had never existed.'"
+      "text": "Which explorer is best known for exploring and surveying  North America's northwest Pacific coast regions?"
     },
     "tags": [
-      "film",
-      "film_and_tv"
-    ],
-    "type": "text_choice",
-    "difficulty": "medium",
-    "regions": [],
-    "isNiche": false
-  },
-  {
-    "category": "society_and_culture",
-    "id": "62c2fa05b3eadb0437fda6bb",
-    "correctAnswer": "Smirnoff",
-    "incorrectAnswers": [
-      "Japan Airlines",
-      "Peugeot",
-      "Hermès"
-    ],
-    "question": {
-      "text": "Which of these brands has a eagle on its logo?"
-    },
-    "tags": [
-      "society_and_culture",
-      "business",
-      "marketing",
-      "animals",
-      "logos",
-      "symbols",
-      "birds"
+      "history",
+      "people",
+      "exploration"
     ],
     "type": "text_choice",
     "difficulty": "medium",
@@ -182,19 +87,104 @@
   },
   {
     "category": "geography",
-    "id": "625e9dc7796f721e95543f2c",
-    "correctAnswer": "Three horizontal bands of sky blue, white, and sky blue, with a yellow sun in the center.",
+    "id": "622a1c357cc59eab6f94fe1b",
+    "correctAnswer": "Ural",
     "incorrectAnswers": [
-      "Red with a white cross that extends to the edges.",
-      "Two equal horizontal bands of white and red.",
-      "Red with a yellow sun having eight broadening rays extending to the edges."
+      "Pyrenees",
+      "Alps",
+      "Carpathian"
     ],
     "question": {
-      "text": "What does the flag of Argentina look like?"
+      "text": "What mountain range separates Europe from Asia?"
     },
     "tags": [
-      "flags",
-      "south_america",
+      "mountains",
+      "europe",
+      "asia",
+      "geography"
+    ],
+    "type": "text_choice",
+    "difficulty": "medium",
+    "regions": [],
+    "isNiche": false
+  },
+  {
+    "category": "food_and_drink",
+    "id": "622a1c367cc59eab6f95022b",
+    "correctAnswer": "Broccoli ",
+    "incorrectAnswers": [
+      "Carrots",
+      "Spinach",
+      "Cabbage"
+    ],
+    "question": {
+      "text": "Which vegetable did President George Bush senior declare publicly that he did not like?"
+    },
+    "tags": [
+      "food_and_drink"
+    ],
+    "type": "text_choice",
+    "difficulty": "hard",
+    "regions": [],
+    "isNiche": false
+  },
+  {
+    "category": "society_and_culture",
+    "id": "622a1c3c7cc59eab6f9518aa",
+    "correctAnswer": "Rubik's Cube",
+    "incorrectAnswers": [
+      "Furby",
+      "Playmobil",
+      "Hula Hoop"
+    ],
+    "question": {
+      "text": "Which toy is a multi-colored block you have to reorganize?"
+    },
+    "tags": [
+      "toys",
+      "general_knowledge",
+      "society_and_culture"
+    ],
+    "type": "text_choice",
+    "difficulty": "easy",
+    "regions": [],
+    "isNiche": false
+  },
+  {
+    "category": "science",
+    "id": "62433431cfaae40c1296142a",
+    "correctAnswer": "A Boar",
+    "incorrectAnswers": [
+      "A Drake",
+      "A Tom",
+      "A Ram"
+    ],
+    "question": {
+      "text": "What is a male guinea pig known as?"
+    },
+    "tags": [
+      "science"
+    ],
+    "type": "text_choice",
+    "difficulty": "medium",
+    "regions": [],
+    "isNiche": false
+  },
+  {
+    "category": "geography",
+    "id": "623384b462eaad73716a8c26",
+    "correctAnswer": "Lake Baikal",
+    "incorrectAnswers": [
+      "Lake Superior",
+      "Lake Victoria",
+      "Loch Ness"
+    ],
+    "question": {
+      "text": "What is the world's deepest lake?"
+    },
+    "tags": [
+      "bodies_of_water",
+      "records",
       "geography"
     ],
     "type": "text_choice",
@@ -204,18 +194,17 @@
   },
   {
     "category": "film_and_tv",
-    "id": "622a1c347cc59eab6f94fc26",
-    "correctAnswer": "\"Plastics.\"",
+    "id": "625fd747dc0dd3b72da64d30",
+    "correctAnswer": "1973",
     "incorrectAnswers": [
-      "\"Hello, gorgeous.\"",
-      "\"Fasten your seatbelts. It's going to be a bumpy night.\"",
-      "\"We’re goin’ streaking!\""
+      "1955",
+      "1961",
+      "1967"
     ],
     "question": {
-      "text": "Which of these quotes is from the film 'The Graduate'?"
+      "text": "In which year was The Exorcist released?"
     },
     "tags": [
-      "quotes",
       "film",
       "film_and_tv"
     ],
