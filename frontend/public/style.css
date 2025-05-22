@@ -1,0 +1,26 @@
+.index_container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 100px auto 50px;
+    height: 95vh;
+    text-align: center;
+}
+
+.index_header {
+    padding: 20px;
+}
+
+.index_main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    height: auto;
+    padding: 20px;
+}
+
+.index_footer {
+    padding: 20px;
+}
+

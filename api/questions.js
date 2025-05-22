@@ -19,7 +19,7 @@ function quickgamefetch() {
 }
 
 function Categoriegamefetch(category){
-fetch('https://the-trivia-api.com/v2/questions?categories=music')
+fetch('https://the-trivia-api.com/v2/questions?categories=category')
   .then(response => response.json())
   .then(data => {
     fs.writeFile('music.json', JSON.stringify(data, null, 2), (err) => {
