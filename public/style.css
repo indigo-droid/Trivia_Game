@@ -3,24 +3,25 @@ body {
   background: linear-gradient(135deg, #3b82f6, #9333ea);
   color: white;
   font-family: Arial, sans-serif;
-  padding: 20px;
+  padding: 30px;
   margin: 0;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  font-size: 18px; /* increased base font size */
 }
 
 .quiz_container {
-  background: rgba(0, 0, 0, 0.5);
-  padding: 25px 30px;
-  border-radius: 12px;
-  max-width: 600px;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 30px 40px;
+  border-radius: 14px;
+  max-width: 700px;
   width: 100%;
-  box-shadow: 0 0 20px rgba(147, 51, 234, 0.7);
+  box-shadow: 0 0 25px rgba(147, 51, 234, 0.8);
   text-align: center;
-  margin-top: 40px;
+  margin-top: 50px;
 }
 
 h1 a {
@@ -29,24 +30,24 @@ h1 a {
 }
 
 h1 {
-  margin-bottom: 30px;
+  margin-bottom: 40px;
   font-weight: 700;
-  font-size: 2rem;
+  font-size: 2.5rem; /* bigger */
   cursor: pointer;
 }
 
 h2 {
-  font-size: 1.3rem;
-  margin-bottom: 15px;
+  font-size: 1.6rem; /* bigger */
+  margin-bottom: 20px;
   font-weight: 600;
 }
 
 /* Footer */
 footer {
   margin-top: auto;
-  padding: 20px 0;
+  padding: 25px 0;
   text-align: center;
-  font-size: 14px;
+  font-size: 16px;
   color: #ccc;
 }
 
@@ -55,11 +56,12 @@ footer a {
   text-decoration: underline;
 }
 
-/* Main buttons */
+/* Main buttons container */
 .main-buttons {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 24px;
+  align-items: center;
 }
 
 /* Buttons */
@@ -68,18 +70,20 @@ button, .option-button {
   border: none;
   color: white;
   font-weight: 600;
-  padding: 12px 24px;
-  border-radius: 8px;
+  padding: 16px 36px;
+  border-radius: 10px;
   cursor: pointer;
-  transition: background 1s ease, transform 1s ease;
-  box-shadow: 0 4px 8px rgba(127, 0, 255, 0.4);
+  transition: background 1.2s ease, transform 1.2s ease;
+  box-shadow: 0 5px 12px rgba(127, 0, 255, 0.5);
   user-select: none;
+  font-size: 1.15rem;
+  min-width: 160px;
 }
 
 button:hover, .option-button:hover {
   background: linear-gradient(90deg, #e100ff, #7f00ff);
-  box-shadow: 0 6px 12px rgba(225, 0, 255, 0.6);
-  transform: scale(1.03);
+  box-shadow: 0 7px 16px rgba(225, 0, 255, 0.7);
+  transform: scale(1.05);
 }
 
 button:disabled {
@@ -89,42 +93,102 @@ button:disabled {
   box-shadow: none;
 }
 
-/* Option buttons */
+/* Option buttons container */
 .options-group {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 18px;
   justify-content: center;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 }
 
+/* Option buttons */
 .option-button {
-  min-width: 140px;
+  min-width: 160px;
   text-align: center;
   text-transform: capitalize;
+  flex: 1 1 160px; /* flex-grow, flex-shrink, flex-basis for responsiveness */
+  max-width: 200px;
 }
 
 .option-button.selected {
-  box-shadow: 0 0 10px 3px rgba(255, 255, 255, 0.8);
-  border: 2px solid white;
+  box-shadow: 0 0 14px 4px rgba(255, 255, 255, 0.85);
+  border: 2.5px solid white;
 }
 
 /* Responsive layout */
-@media (max-width: 480px) {
-  .options-group {
-    flex-direction: column;
-    gap: 10px;
+@media (max-width: 768px) {
+  body {
+    font-size: 16px;
+    padding: 20px;
   }
 
   .quiz_container {
-    padding: 20px;
+    padding: 25px 30px;
+    max-width: 90%;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+  }
+
+  button, .option-button {
+    font-size: 1.05rem;
+    padding: 14px 28px;
+    min-width: 140px;
+  }
+
+  .options-group {
+    gap: 14px;
+  }
+
+  .option-button {
+    min-width: 140px;
+    max-width: 180px;
+    flex-basis: 140px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+    padding: 15px;
+  }
+
+  .quiz_container {
+    padding: 20px 20px;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  button, .option-button {
+    font-size: 1rem;
+    padding: 12px 24px;
+    min-width: 100%;
+    max-width: 100%;
+    flex-basis: 100%;
+  }
+
+  .options-group {
+    flex-direction: column;
+    gap: 12px;
   }
 }
 
 /* Quiz section */
 #question {
-  font-size: 1.3rem;
-  margin-bottom: 20px;
+  font-size: 1.5rem;
+  margin-bottom: 25px;
   font-weight: 600;
 }
 
@@ -136,16 +200,17 @@ ul#answers {
 
 li.answer {
   background: #ffffff33;
-  margin-bottom: 12px;
-  padding: 12px 20px;
-  border-radius: 8px;
+  margin-bottom: 16px;
+  padding: 16px 28px;
+  border-radius: 10px;
   cursor: pointer;
   font-weight: 600;
   user-select: none;
-  transition: background-color 0.6s, color 0.6s;
-  max-width: 400px;
+  transition: background-color 0.8s, color 0.8s;
+  max-width: 500px;
   margin-left: auto;
   margin-right: auto;
+  font-size: 1.15rem;
 }
 
 li.answer:hover:not(.disabled) {
@@ -156,6 +221,8 @@ li.answer.disabled {
   pointer-events: none;
   cursor: default;
   opacity: 0.6;
+  /* subtle darkening of font when selected */
+  color: rgba(255, 255, 255, 0.9);
 }
 
 li.answer.correct {
@@ -172,29 +239,29 @@ li.answer.incorrect {
 
 /* Next button */
 #nextButton {
-  margin-top: 20px;
-  padding: 12px 30px;
-  font-size: 18px;
-  border-radius: 8px;
+  margin-top: 30px;
+  padding: 16px 40px;
+  font-size: 20px;
+  border-radius: 10px;
   display: none;
   background: linear-gradient(90deg, #7f00ff, #e100ff);
   color: white;
   cursor: pointer;
-  box-shadow: 0 4px 8px rgba(127, 0, 255, 0.4);
-  transition: background 1s ease, transform 1s ease;
+  box-shadow: 0 5px 12px rgba(127, 0, 255, 0.5);
+  transition: background 1.2s ease, transform 1.2s ease;
 }
 
 #nextButton:hover {
   background: linear-gradient(90deg, #e100ff, #7f00ff);
-  box-shadow: 0 6px 12px rgba(225, 0, 255, 0.6);
-  transform: scale(1.03);
+  box-shadow: 0 7px 16px rgba(225, 0, 255, 0.7);
+  transform: scale(1.05);
 }
 
 /* End buttons */
 #endButtons {
   display: flex;
-  gap: 15px;
+  gap: 20px;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 30px;
   flex-wrap: wrap;
 }
