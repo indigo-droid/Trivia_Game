@@ -1,17 +1,17 @@
-/* Body with blue-purple gradient and white text for good contrast */
+/* Base styles */
 body {
   background: linear-gradient(135deg, #3b82f6, #9333ea);
-  min-height: 100vh;
-  margin: 0;
+  color: white;
   font-family: Arial, sans-serif;
-  color: #f0f0f5; /* light off-white for better readability */
   padding: 20px;
+  margin: 0;
+  min-height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 
-/* Container for the whole quiz and selection pages */
 .quiz_container {
   background: rgba(0, 0, 0, 0.5);
   padding: 25px 30px;
@@ -20,28 +20,50 @@ body {
   width: 100%;
   box-shadow: 0 0 20px rgba(147, 51, 234, 0.7);
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  box-sizing: border-box;
-  align-items: center;
-  justify-content: flex-start;
+  margin-top: 40px;
 }
 
-/* Title styling */
-.quiz_container h1 {
-  cursor: pointer;
-  margin-bottom: 30px;
-  font-weight: 700;
-}
-
-.quiz_container h1 a {
+h1 a {
   text-decoration: none;
   color: white;
 }
 
-/* Button styles: vibrant purple-blue gradient with subtle shadow */
-button, .option-button, .QuizButton {
+h1 {
+  margin-bottom: 30px;
+  font-weight: 700;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+h2 {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+/* Footer */
+footer {
+  margin-top: auto;
+  padding: 20px 0;
+  text-align: center;
+  font-size: 14px;
+  color: #ccc;
+}
+
+footer a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* Main buttons */
+.main-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Buttons */
+button, .option-button {
   background: linear-gradient(90deg, #7f00ff, #e100ff);
   border: none;
   color: white;
@@ -49,66 +71,67 @@ button, .option-button, .QuizButton {
   padding: 12px 24px;
   border-radius: 8px;
   cursor: pointer;
-  transition: background 0.6s ease;
+  transition: background 0.6s ease, transform 0.6s ease;
   box-shadow: 0 4px 8px rgba(127, 0, 255, 0.4);
   user-select: none;
 }
 
-button:hover, .option-button:hover, .QuizButton:hover {
+button:hover, .option-button:hover {
   background: linear-gradient(90deg, #e100ff, #7f00ff);
   box-shadow: 0 6px 12px rgba(225, 0, 255, 0.6);
-  transition: background 0.6s ease;
+  transform: scale(1.03);
 }
 
-/* Option button flex container for category and difficulty */
+button:disabled {
+  background: gray;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Option buttons */
 .options-group {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
   justify-content: center;
-  margin-bottom: 40px;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-bottom: 30px;
 }
 
-/* Each option button with fixed min-width and center alignment */
 .option-button {
   min-width: 140px;
   text-align: center;
 }
 
-/* Responsive: stack buttons vertically on small screens */
+.option-button.selected {
+  box-shadow: 0 0 10px 3px rgba(255, 255, 255, 0.8);
+  border: 2px solid white;
+}
+
+/* Responsive layout */
 @media (max-width: 480px) {
   .options-group {
     flex-direction: column;
     gap: 10px;
   }
+
+  .quiz_container {
+    padding: 20px;
+  }
 }
 
-/* Push Start button to bottom of container */
-#startGame {
-  margin-top: auto;
-  width: 160px;
-  font-size: 18px;
-}
-
-/* Question styling */
+/* Quiz section */
 #question {
-  margin-bottom: 20px;
-  font-weight: 700;
-  font-size: 24px;
   font-size: 1.3rem;
+  margin-bottom: 20px;
+  font-weight: 600;
 }
 
-/* Answers list */
 ul#answers {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-/* Each answer */
 li.answer {
   background: #ffffff33;
   margin-bottom: 12px;
@@ -117,37 +140,35 @@ li.answer {
   cursor: pointer;
   font-weight: 600;
   user-select: none;
+  transition: background-color 0.3s;
   max-width: 400px;
   margin-left: auto;
   margin-right: auto;
-  transition: background 0.3s;
 }
 
 li.answer:hover:not(.disabled) {
   background: #ffffff66;
 }
 
-/* Disabled answers can't be clicked */
-.disabled {
+li.answer.disabled {
   pointer-events: none;
-  opacity: 0.7;
   cursor: default;
+  opacity: 0.6;
 }
 
-/* Correct & Incorrect answer colors */
-.answer.correct, li.answer.correct {
+li.answer.correct {
   background-color: #22c55e !important; /* green */
   color: white;
-  font-weight: 700;
+  font-weight: bold;
 }
 
-.answer.incorrect, li.answer.incorrect {
+li.answer.incorrect {
   background-color: #ef4444 !important; /* red */
   color: white;
-  font-weight: 700;
+  font-weight: bold;
 }
 
-/* Next button styling */
+/* Next button */
 #nextButton {
   margin-top: 20px;
   padding: 12px 30px;
@@ -158,38 +179,20 @@ li.answer:hover:not(.disabled) {
   color: white;
   cursor: pointer;
   box-shadow: 0 4px 8px rgba(127, 0, 255, 0.4);
-  transition: background 0.6s ease;
+  transition: background 0.6s ease, transform 0.6s ease;
 }
 
 #nextButton:hover {
   background: linear-gradient(90deg, #e100ff, #7f00ff);
   box-shadow: 0 6px 12px rgba(225, 0, 255, 0.6);
-  transition: background 0.6s ease;
+  transform: scale(1.03);
 }
 
-/* Next and Restart buttons (used at quiz end) */
-button#nextBtn,
-button#restartBtn {
+/* End buttons */
+#endButtons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
   margin-top: 20px;
-  padding: 12px 30px;
-  border: none;
-  border-radius: 10px;
-  background: linear-gradient(90deg, #7f00ff, #e100ff);
-  color: white;
-  font-weight: 700;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(225, 0, 255, 0.5);
-  transition: background 0.6s ease;
-}
-
-button#nextBtn:hover,
-button#restartBtn:hover {
-  background: linear-gradient(90deg, #e100ff, #7f00ff);
-}
-
-/* Disabled buttons styling */
-button#nextBtn:disabled {
-  background: gray;
-  cursor: not-allowed;
-  box-shadow: none;
+  flex-wrap: wrap;
 }
