@@ -33,3 +33,32 @@
     font-size: 16px;
     font-weight: normal;
 }
+
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+.index_container, .quiz_container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.QuizButton {
+    padding: 10px 20px;
+    font-size: 18px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.answer {
+    padding: 10px;
+    margin: 5px;
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
