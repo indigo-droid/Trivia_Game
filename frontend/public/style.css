@@ -24,3 +24,12 @@
     padding: 20px;
 }
 
+.question_header {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.question_text {
+    font-size: 16px;
+    font-weight: normal;
+}
