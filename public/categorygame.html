@@ -27,6 +27,9 @@
 </head>
 <body>
   <div class="quiz_container">
+    <h1><a href="index.html" style="text-decoration:none; color:inherit;">Trivia Quiz</a></h1>
+    <h2>Select Category & Difficulty</h2>
+
     <h2>Select Category</h2>
     <div id="category-options" class="options-group"></div>
 
@@ -52,4 +55,36 @@
 
   const difficulties = ["easy", "medium", "hard"];
 
-  let selec
+  let selectedCategory = null;
+  let selectedDifficulty = null;
+
+  function createOptionButtons(containerId, options, isCategory) {
+    const container = document.getElementById(containerId);
+    options.forEach(opt => {
+      const btn = document.createElement("button");
+      btn.textContent = isCategory ? opt.name : opt;
+      btn.classList.add("option-button");
+      btn.onclick = () => {
+        // Deselect previous in group
+        [...container.children].forEach(child => child.classList.remove("selected"));
+        btn.classList.add("selected");
+        if (isCategory) selectedCategory = opt.id;
+        else selectedDifficulty = opt;
+        document.getElementById("startGame").disabled = !(selectedCategory && selectedDifficulty);
+      };
+      container.appendChild(btn);
+    });
+  }
+
+  createOptionButtons("category-options", categories, true);
+  createOptionButtons("difficulty-options", difficulties, false);
+
+  document.getElementById("startGame").onclick = () => {
+    const params = new URLSearchParams();
+    params.append("category", selectedCategory);
+    params.append("difficulty", selectedDifficulty);
+    window.location.href = "quiz.html?" + params.toString();
+  };
+</script>
+</body>
+</html>
