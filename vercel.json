@@ -1,11 +1,10 @@
 {
   "version": 2,
   "builds": [
-    { "src": "api/questions.js", "use": "@vercel/node" },
-    { "src": "frontend/public/**", "use": "@vercel/static" }
+    { "src": "api/quickgame.js", "use": "@vercel/node" }
   ],
   "routes": [
-    { "src": "/api/questions", "dest": "/api/questions.js" },
-    { "src": "/(.*)", "dest": "/frontend/public/$1" }
+    { "src": "/api/quickgame", "dest": "/api/quickgame.js" },
+    { "src": "/(.*)", "dest": "/public/$1" }
   ]
 }
