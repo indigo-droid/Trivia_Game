@@ -75,10 +75,24 @@
         currentIndex++;
         if (currentIndex >= questions.length) {
           questionEl.textContent = `Quiz completed! Your score: ${score} / ${questions.length}`;
+
+          let message = "";
+          const percentage = (score / questions.length) * 100;
+
+          if (percentage === 100) {
+            message = "🎉 Perfect score! You're a trivia master!";
+          } else if (percentage >= 80) {
+            message = "🔥 Great job! You really know your stuff!";
+          } else if (percentage >= 50) {
+            message = "🙂 Not bad! A bit more practice and you’ll ace it!";
+          } else {
+            message = "😅 Keep trying! Trivia takes time to master.";
+          }
+
           answersEl.innerHTML = "";
           nextButton.style.display = "none";
           scoreDisplay.style.display = "block";
-          scoreDisplay.textContent = "Well done!";
+          scoreDisplay.textContent = message;
           endButtons.style.display = "flex";
         } else {
           showQuestion();

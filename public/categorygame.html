@@ -36,7 +36,11 @@
       { id: "sport_and_leisure", name: "Sport & Leisure" }
     ].sort((a, b) => a.name.localeCompare(b.name));
 
-    const difficulties = ["easy", "medium", "hard"];
+    const difficulties = ["easy", "medium", "hard"].map(d => ({
+        id: d,
+        name: d.charAt(0).toUpperCase() + d.slice(1)
+    }));
+
 
     let selectedCategory = null;
     let selectedDifficulty = null;
@@ -45,13 +49,13 @@
       const container = document.getElementById(containerId);
       options.forEach(opt => {
         const btn = document.createElement("button");
-        btn.textContent = isCategory ? opt.name : opt;
+        btn.textContent = opt.name;
         btn.classList.add("option-button");
         btn.onclick = () => {
           [...container.children].forEach(child => child.classList.remove("selected"));
           btn.classList.add("selected");
           if (isCategory) selectedCategory = opt.id;
-          else selectedDifficulty = opt;
+          else selectedDifficulty = opt.id;
           document.getElementById("startGame").disabled = !(selectedCategory && selectedDifficulty);
         };
         container.appendChild(btn);
