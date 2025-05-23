@@ -1,3 +1,13 @@
+body {
+  /* Vertical gradient from blue to purple */
+    background: linear-gradient(135deg, #3b82f6 0%, #6366f1 50%, #8b5cf6 100%);
+    min-height: 100vh; /* full viewport height */
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: white; /* better contrast on gradient */
+}
+
+
 .index_container {
     display: grid;
     grid-template-columns: 1fr;
