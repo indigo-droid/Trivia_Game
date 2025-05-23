@@ -129,3 +129,111 @@ button:hover, .option-button:hover, .QuizButton:hover {
   background: linear-gradient(90deg, #e100ff, #7f00ff);
   box-shadow: 0 6px 12px rgba(225, 0, 255, 0.6);
 }
+
+/* Background gradient and general body styling */
+body {
+  /* Blue to purple fade background */
+  background: linear-gradient(135deg, #3b82f6, #9333ea);
+  color: white;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 0;
+}
+
+/* Quiz container */
+.quiz_container {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 25px 30px;
+  border-radius: 12px;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 0 20px rgba(147, 51, 234, 0.7);
+  text-align: center;
+}
+
+/* Title styling */
+.quiz_container h1 {
+  cursor: pointer;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+.quiz_container h1 a {
+  text-decoration: none;
+  color: white;
+}
+
+/* Question text */
+#question {
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+}
+
+/* Answers list */
+ul#answers {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Each answer */
+li.answer {
+  background: #ffffff33;
+  margin-bottom: 12px;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  user-select: none;
+  transition: background 0.3s;
+}
+
+li.answer:hover:not(.disabled) {
+  background: #ffffff66;
+}
+
+li.answer.disabled {
+  cursor: default;
+  pointer-events: none;
+}
+
+/* Correct and incorrect answers */
+li.answer.correct {
+  background-color: #22c55e !important; /* green */
+  color: white;
+}
+
+li.answer.incorrect {
+  background-color: #ef4444 !important; /* red */
+  color: white;
+}
+
+/* Next and Restart buttons */
+button#nextBtn,
+button#restartBtn {
+  margin-top: 20px;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #7f00ff, #e100ff);
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(225, 0, 255, 0.5);
+  transition: background 0.3s ease;
+}
+
+button#nextBtn:hover,
+button#restartBtn:hover {
+  background: linear-gradient(90deg, #e100ff, #7f00ff);
+}
+
+button#nextBtn:disabled {
+  background: gray;
+  cursor: not-allowed;
+  box-shadow: none;
+}

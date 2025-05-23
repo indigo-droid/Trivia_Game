@@ -1,21 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trivia Quiz</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>Trivia Quiz</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="index_container">
-        <div class="index_header">
-        <h1 id="maintitle"><a href="index.html" style="text-decoration:none; color:inherit;">Trivia Quiz</a></h1>
-        </div>
-        <div class="index_main">
-            <a href="quiz.html"><button class="QuizButton">Quick Game</button></a>
-            <a href="categorygame.html"><button class="QuizButton">Category Game</button></a>
-        </div>
-        <div class="index_footer"></div>
+  <div class="quiz_container">
+    <h1><a href="index.html">Trivia Quiz</a></h1>
+
+    <div class="options-group" style="flex-direction: column; gap: 20px; max-width: 300px; margin: 40px auto 0;">
+      <button onclick="window.location.href='quiz.html'">Quick Game</button>
+      <button onclick="window.location.href='categorygame.html'">Category Game</button>
     </div>
+  </div>
 </body>
 </html>

@@ -1,75 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<title>Select Category & Difficulty</title>
-<link rel="stylesheet" href="style.css" />
-<style>
-  .quiz_container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    padding: 20px;
-    box-sizing: border-box;
-  }
-  h1 a {
-    text-decoration: none;
-    color: inherit;
-  }
-  .options-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-    margin-bottom: 40px;
-  }
-  .option-button {
-    padding: 10px 20px;
-    border: 2px solid #007BFF;
-    background: white;
-    cursor: pointer;
-    border-radius: 5px;
-    user-select: none;
-    min-width: 140px;
-    text-align: center;
-    font-weight: 600;
-  }
-  .option-button.selected {
-    background: #007BFF;
-    color: white;
-  }
-
-  #startGame {
-    margin-top: auto; /* push to bottom */
-    padding: 12px 30px;
-    font-size: 18px;
-    font-weight: 700;
-    border: none;
-    border-radius: 8px;
-    background: linear-gradient(90deg, #7f00ff, #e100ff);
-    color: white;
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(127, 0, 255, 0.4);
-    transition: background 0.3s ease;
-  }
-  #startGame:disabled {
-    background: gray;
-    cursor: not-allowed;
-    box-shadow: none;
-  }
-  #startGame:hover:not(:disabled) {
-    background: linear-gradient(90deg, #e100ff, #7f00ff);
-    box-shadow: 0 6px 12px rgba(225, 0, 255, 0.6);
-  }
-
-  /* Responsive: stack buttons vertically on small screens */
-  @media (max-width: 480px) {
-    .options-group {
-      flex-direction: column;
-      gap: 10px;
-    }
-  }
-</style>
+  <meta charset="UTF-8" />
+  <title>Select Category & Difficulty</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="quiz_container">
@@ -84,55 +18,61 @@
     <button id="startGame" disabled>Start Game</button>
   </div>
 
-<script>
-  const categories = [
-    { id: "arts_and_literature", name: "Arts & Literature" },
-    { id: "film_and_tv", name: "Film & TV" },
-    { id: "food_and_drink", name: "Food & Drink" },
-    { id: "general_knowledge", name: "General Knowledge" },
-    { id: "geography", name: "Geography" },
-    { id: "history", name: "History" },
-    { id: "music", name: "Music" },
-    { id: "science", name: "Science" },
-    { id: "society_and_culture", name: "Society & Culture" },
-    { id: "sport_and_leisure", name: "Sport & Leisure" }
-  ];
+  <script>
+    const categories = [
+      { id: "arts_and_literature", name: "Arts & Literature" },
+      { id: "film_and_tv", name: "Film & TV" },
+      { id: "food_and_drink", name: "Food & Drink" },
+      { id: "general_knowledge", name: "General Knowledge" },
+      { id: "geography", name: "Geography" },
+      { id: "history", name: "History" },
+      { id: "music", name: "Music" },
+      { id: "science", name: "Science" },
+      { id: "society_and_culture", name: "Society & Culture" },
+      { id: "sport_and_leisure", name: "Sport & Leisure" }
+    ];
 
-  // Sort categories alphabetically by display name before creating buttons
-  categories.sort((a, b) => a.name.localeCompare(b.name));
+    // Sort categories alphabetically by name
+    categories.sort((a, b) => a.name.localeCompare(b.name));
 
-  const difficulties = ["easy", "medium", "hard"];
+    const difficulties = ["easy", "medium", "hard"];
 
-  let selectedCategory = null;
-  let selectedDifficulty = null;
+    let selectedCategory = null;
+    let selectedDifficulty = null;
 
-  function createOptionButtons(containerId, options, isCategory) {
-    const container = document.getElementById(containerId);
-    options.forEach(opt => {
-      const btn = document.createElement("button");
-      btn.textContent = isCategory ? opt.name : opt;
-      btn.classList.add("option-button");
-      btn.onclick = () => {
-        // Deselect previous in group
-        [...container.children].forEach(child => child.classList.remove("selected"));
-        btn.classList.add("selected");
-        if (isCategory) selectedCategory = opt.id;
-        else selectedDifficulty = opt;
-        document.getElementById("startGame").disabled = !(selectedCategory && selectedDifficulty);
-      };
-      container.appendChild(btn);
-    });
-  }
+    function createOptionButtons(containerId, options, isCategory) {
+      const container = document.getElementById(containerId);
+      container.innerHTML = ""; // Clear if rerun
 
-  createOptionButtons("category-options", categories, true);
-  createOptionButtons("difficulty-options", difficulties, false);
+      options.forEach(opt => {
+        const btn = document.createElement("button");
+        btn.textContent = isCategory ? opt.name : capitalize(opt);
+        btn.classList.add("option-button");
+        btn.onclick = () => {
+          // Deselect all buttons in container
+          [...container.children].forEach(child => child.classList.remove("selected"));
+          btn.classList.add("selected");
+          if (isCategory) selectedCategory = opt.id;
+          else selectedDifficulty = opt;
+          document.getElementById("startGame").disabled = !(selectedCategory && selectedDifficulty);
+        };
+        container.appendChild(btn);
+      });
+    }
 
-  document.getElementById("startGame").onclick = () => {
-    const params = new URLSearchParams();
-    params.append("category", selectedCategory);
-    params.append("difficulty", selectedDifficulty);
-    window.location.href = "quiz.html?" + params.toString();
-  };
-</script>
+    function capitalize(s) {
+      return s.charAt(0).toUpperCase() + s.slice(1);
+    }
+
+    createOptionButtons("category-options", categories, true);
+    createOptionButtons("difficulty-options", difficulties, false);
+
+    document.getElementById("startGame").onclick = () => {
+      const params = new URLSearchParams();
+      params.append("category", selectedCategory);
+      params.append("difficulty", selectedDifficulty);
+      window.location.href = "quiz.html?" + params.toString();
+    };
+  </script>
 </body>
 </html>

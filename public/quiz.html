@@ -1,133 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<title>Quick Game</title>
-<link rel="stylesheet" href="style.css" />
-<style>
-  #nextButton {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 16px;
-    display: none;
-    cursor: pointer;
-  }
-  .answer.correct { color: green; }
-  .answer.incorrect { color: red; }
-  .answer {
-    padding: 10px;
-    margin: 5px;
-    background-color: #f0f0f0;
-    cursor: pointer;
-    list-style-type: none;
-  }
-  .disabled {
-    pointer-events: none;
-    opacity: 0.6;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <title>Quick Game</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="quiz_container">
-    <h1><a href="index.html" style="text-decoration:none; color:inherit;">Trivia Quiz</a></h1>
+    <h1><a href="index.html">Trivia Quiz</a></h1>
     <h2 id="question">Loading question...</h2>
-
 
     <ul id="answers"></ul>
     <button id="nextButton">Next</button>
     <p id="scoreDisplay" style="display:none;"></p>
   </div>
 
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const params = new URLSearchParams(window.location.search);
-  const category = params.get("category");
-  const difficulty = params.get("difficulty");
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const params = new URLSearchParams(window.location.search);
+      const category = params.get("category");
+      const difficulty = params.get("difficulty");
 
-  let apiURL = `https://the-trivia-api.com/v2/questions?limit=10`;
-  if (category) apiURL += `&categories=${category}`;
-  if (difficulty) apiURL += `&difficulty=${difficulty}`;
+      let apiURL = `https://the-trivia-api.com/v2/questions?limit=10`;
+      if (category) apiURL += `&categories=${category}`;
+      if (difficulty) apiURL += `&difficulty=${difficulty}`;
 
-  let questions = [];
-  let currentIndex = 0;
-  let score = 0;
+      let questions = [];
+      let currentIndex = 0;
+      let score = 0;
 
-  const questionEl = document.getElementById("question");
-  const answersEl = document.getElementById("answers");
-  const nextButton = document.getElementById("nextButton");
-  const scoreDisplay = document.getElementById("scoreDisplay");
+      const questionEl = document.getElementById("question");
+      const answersEl = document.getElementById("answers");
+      const nextButton = document.getElementById("nextButton");
+      const scoreDisplay = document.getElementById("scoreDisplay");
 
-  function clearAnswers() {
-    answersEl.innerHTML = "";
-  }
-
-  function showQuestion() {
-    clearAnswers();
-    const q = questions[currentIndex];
-    questionEl.textContent = q.question.text;
-
-    // Shuffle answers
-    const answers = [...q.incorrectAnswers, q.correctAnswer].sort(() => Math.random() - 0.5);
-
-    answers.forEach(answer => {
-      const li = document.createElement("li");
-      li.textContent = answer;
-      li.classList.add("answer");
-      li.onclick = () => {
-        // disable all answers
-        [...answersEl.children].forEach(child => child.classList.add("disabled"));
-
-        if (answer === q.correctAnswer) {
-          li.classList.add("correct");
-          score++;
-        } else {
-          li.classList.add("incorrect");
-          // highlight the correct answer
-          for (const child of answersEl.children) {
-            if (child.textContent === q.correctAnswer) {
-              child.classList.add("correct");
-              break;
-            }
-          }
-        }
-        nextButton.style.display = "inline-block";
-      };
-      answersEl.appendChild(li);
-    });
-
-    nextButton.style.display = "none";
-  }
-
-  nextButton.onclick = () => {
-    currentIndex++;
-    if (currentIndex >= questions.length) {
-      // Show final score
-      questionEl.textContent = `Quiz completed! Your score: ${score} / ${questions.length}`;
-      answersEl.innerHTML = "";
-      nextButton.style.display = "none";
-      scoreDisplay.style.display = "block";
-      scoreDisplay.textContent = "Refresh the page or go back to start a new game.";
-    } else {
-      showQuestion();
-    }
-  };
-
-  // Fetch questions
-  fetch(apiURL)
-    .then(res => res.json())
-    .then(data => {
-      questions = data;
-      if (questions.length === 0) {
-        questionEl.textContent = "No questions found for this category/difficulty.";
-        return;
+      function clearAnswers() {
+        answersEl.innerHTML = "";
       }
-      showQuestion();
-    })
-    .catch(err => {
-      questionEl.textContent = "Failed to load questions.";
-      console.error(err);
+
+      function showQuestion() {
+        clearAnswers();
+        const q = questions[currentIndex];
+        questionEl.textContent = q.question.text;
+
+        // Shuffle answers
+        const answers = [...q.incorrectAnswers, q.correctAnswer].sort(() => Math.random() - 0.5);
+
+        answers.forEach(answer => {
+          const li = document.createElement("li");
+          li.textContent = answer;
+          li.classList.add("answer");
+          li.onclick = () => {
+            [...answersEl.children].forEach(child => {
+              child.classList.add("disabled");
+              child.onclick = null; // disable further clicks
+            });
+
+            if (answer === q.correctAnswer) {
+              li.classList.add("correct");
+              score++;
+            } else {
+              li.classList.add("incorrect");
+              for (const child of answersEl.children) {
+                if (child.textContent === q.correctAnswer) {
+                  child.classList.add("correct");
+                  break;
+                }
+              }
+            }
+            nextButton.style.display = "inline-block";
+          };
+          answersEl.appendChild(li);
+        });
+
+        nextButton.style.display = "none";
+      }
+
+      nextButton.onclick = () => {
+        currentIndex++;
+        if (currentIndex >= questions.length) {
+          questionEl.textContent = `Quiz completed! Your score: ${score} / ${questions.length}`;
+          answersEl.innerHTML = "";
+          nextButton.style.display = "none";
+          scoreDisplay.style.display = "block";
+          scoreDisplay.textContent = "Refresh the page or go back to start a new game.";
+        } else {
+          showQuestion();
+        }
+      };
+
+      fetch(apiURL)
+        .then(res => res.json())
+        .then(data => {
+          questions = data;
+          if (questions.length === 0) {
+            questionEl.textContent = "No questions found for this category/difficulty.";
+            return;
+          }
+          showQuestion();
+        })
+        .catch(err => {
+          questionEl.textContent = "Failed to load questions.";
+          console.error(err);
+        });
     });
-});
-</script>
+  </script>
 </body>
 </html>
