@@ -18,6 +18,7 @@ function quickgamefetch() {
     });
 }
 
+
 function Categoriegamefetch(category){
 fetch('https://the-trivia-api.com/v2/questions?categories=category')
   .then(response => response.json())
