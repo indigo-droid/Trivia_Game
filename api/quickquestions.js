@@ -19,23 +19,17 @@ function quickgamefetch() {
 }
 
 
-async function quickgamefetch2() {
+export default async function handler(req, res) {
     try {
         const response = await fetch('https://the-trivia-api.com/v2/questions');
         const data = await response.json();
 
         if (data.length > 0) {
-            const question = data[0]; // Get the first question
-
-            // Display the question
-            document.querySelector('.quick_main').innerHTML = `
-                <h3>${question.question.text}</h3>
-                <ul>
-                    ${question.answers.map(answer => `<li>${answer}</li>`).join('')}
-                </ul>
-            `;
+            res.status(200).json(data[0]); // Sends one trivia question
+        } else {
+            res.status(404).json({ error: "No trivia questions found" });
         }
     } catch (error) {
-        console.error('Error fetching trivia data:', error);
+        res.status(500).json({ error: "Error fetching trivia data" });
     }
 }
