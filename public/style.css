@@ -62,3 +62,12 @@ ul {
     background-color: #f0f0f0;
     cursor: pointer;
 }
+
+.option-button:hover {
+  background-color: #0056b3;
+  color: white;
+}
+
+.answer:hover:not(.disabled) {
+  background-color: #ddd;
+}

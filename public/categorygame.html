@@ -1,47 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Select Category</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8" />
+<title>Select Category & Difficulty</title>
+<link rel="stylesheet" href="style.css" />
+<style>
+  .options-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+  .option-button {
+    padding: 10px 20px;
+    border: 2px solid #007BFF;
+    background: white;
+    cursor: pointer;
+    border-radius: 5px;
+    user-select: none;
+  }
+  .option-button.selected {
+    background: #007BFF;
+    color: white;
+  }
+</style>
 </head>
 <body>
   <div class="quiz_container">
-    <h2>Select Category & Difficulty</h2>
-    <label>Category:
-      <select id="category">
-        <option value="">Any</option>
-        <option value="science">Science</option>
-        <option value="geography">Geography</option>
-        <option value="history">History</option>
-        <option value="music">Music</option>
-        <option value="film_and_tv">Film & TV</option>
-      </select>
-    </label>
-    <br><br>
-    <label>Difficulty:
-      <select id="difficulty">
-        <option value="">Any</option>
-        <option value="easy">Easy</option>
-        <option value="medium">Medium</option>
-        <option value="hard">Hard</option>
-      </select>
-    </label>
-    <br><br>
-    <button onclick="startCategoryGame()">Start Game</button>
+    <h2>Select Category</h2>
+    <div id="category-options" class="options-group"></div>
+
+    <h2>Select Difficulty</h2>
+    <div id="difficulty-options" class="options-group"></div>
+
+    <button id="startGame" disabled>Start Game</button>
   </div>
 
-  <script>
-    function startCategoryGame() {
-      const category = document.getElementById("category").value;
-      const difficulty = document.getElementById("difficulty").value;
-      const params = new URLSearchParams();
+<script>
+  const categories = [
+    { id: "arts_and_literature", name: "Arts & Literature" },
+    { id: "film_and_tv", name: "Film & TV" },
+    { id: "food_and_drink", name: "Food & Drink" },
+    { id: "general_knowledge", name: "General Knowledge" },
+    { id: "geography", name: "Geography" },
+    { id: "history", name: "History" },
+    { id: "music", name: "Music" },
+    { id: "science", name: "Science" },
+    { id: "society_and_culture", name: "Society & Culture" },
+    { id: "sport_and_leisure", name: "Sport & Leisure" }
+  ];
 
-      if (category) params.append("category", category);
-      if (difficulty) params.append("difficulty", difficulty);
+  const difficulties = ["easy", "medium", "hard"];
 
-      window.location.href = "quiz.html?" + params.toString();
-    }
-  </script>
-</body>
-</html>
+  let selec
