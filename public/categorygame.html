@@ -1,19 +1,47 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trivia Quiz</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Select Category</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+<body>
+  <div class="quiz_container">
+    <h2>Select Category & Difficulty</h2>
+    <label>Category:
+      <select id="category">
+        <option value="">Any</option>
+        <option value="science">Science</option>
+        <option value="geography">Geography</option>
+        <option value="history">History</option>
+        <option value="music">Music</option>
+        <option value="film_and_tv">Film & TV</option>
+      </select>
+    </label>
+    <br><br>
+    <label>Difficulty:
+      <select id="difficulty">
+        <option value="">Any</option>
+        <option value="easy">Easy</option>
+        <option value="medium">Medium</option>
+        <option value="hard">Hard</option>
+      </select>
+    </label>
+    <br><br>
+    <button onclick="startCategoryGame()">Start Game</button>
+  </div>
 
-<body> 
-    <h1 id = "categorytitle">Category Quiz</h1>
-    <div id="category-container">
-        <h2>Select a Category</h2>
-        <button class="category-button" onclick="Categoriegamefetch('Science')">Science</button>
-        <button class="category-button" onclick="Categoriegamefetch('History')">History</button>
-        <button class="category-button" onclick="Categoriegamefetch('Geography')">Geography</button>
-        <button class="category-button" onclick="Categoriegamefetch('Sports')">Sports</button>
+  <script>
+    function startCategoryGame() {
+      const category = document.getElementById("category").value;
+      const difficulty = document.getElementById("difficulty").value;
+      const params = new URLSearchParams();
+
+      if (category) params.append("category", category);
+      if (difficulty) params.append("difficulty", difficulty);
+
+      window.location.href = "quiz.html?" + params.toString();
+    }
+  </script>
 </body>
 </html>

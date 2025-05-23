@@ -1,49 +1,60 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <title>Quick Game</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="quiz_container">
-        <h2 id="question"></h2>
-        <ul id="answers"></ul>
-    </div>
+    <head>
+        <meta charset="UTF-8">
+        <title>Quick Game</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="quiz_container">
+            <h2 id="question"></h2>
+            <ul id="answers"></ul>
+        </div>
 
-    <script>
+        <script>
         document.addEventListener("DOMContentLoaded", () => {
-            fetch('/api/quickgame')
-                .then(response => response.json())
-                .then(data => {
-                    const question = data[0];
-                    const questionEl = document.getElementById("question");
-                    const answersEl = document.getElementById("answers");
+        const params = new URLSearchParams(window.location.search);
+        const category = params.get("category");
+        const difficulty = params.get("difficulty");
 
-                    questionEl.textContent = question.question.text;
+        let url = "/api/quickgame";
+        if (category || difficulty) {
+            url = `https://the-trivia-api.com/v2/questions?limit=1`;
+            if (category) url += `&categories=${category}`;
+            if (difficulty) url += `&difficulty=${difficulty}`;
+        }
 
-                    const answers = [...question.incorrectAnswers, question.correctAnswer]
-                        .sort(() => Math.random() - 0.5);
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+            const question = data[0];
+            const questionEl = document.getElementById("question");
+            const answersEl = document.getElementById("answers");
 
-                    answers.forEach(answer => {
-                        const li = document.createElement("li");
-                        li.textContent = answer;
-                        li.classList.add("answer");
-                        li.onclick = () => {
-                            if (answer === question.correctAnswer) {
-                                li.style.color = "green";
-                            } else {
-                                li.style.color = "red";
-                            }
-                        };
-                        answersEl.appendChild(li);
-                    });
-                })
-                .catch(err => {
-                    document.body.innerHTML = '<p>Failed to load question.</p>';
-                    console.error(err);
-                });
+            questionEl.textContent = question.question.text;
+
+            const answers = [...question.incorrectAnswers, question.correctAnswer]
+                .sort(() => Math.random() - 0.5);
+
+            answers.forEach(answer => {
+                const li = document.createElement("li");
+                li.textContent = answer;
+                li.classList.add("answer");
+                li.onclick = () => {
+                if (answer === question.correctAnswer) {
+                    li.style.color = "green";
+                } else {
+                    li.style.color = "red";
+                }
+                };
+                answersEl.appendChild(li);
+            });
+            })
+            .catch(err => {
+            document.body.innerHTML = '<p>Failed to load question.</p>';
+            console.error(err);
+            });
         });
-    </script>
-</body>
+        </script>
+    </body>
 </html>
