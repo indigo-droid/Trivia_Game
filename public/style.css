@@ -153,28 +153,44 @@ button:disabled {
 @media (max-width: 480px) {
   .options-group {
     flex-direction: column;
-    gap: 12px;
+    gap: 20px;  /* more spacing */
   }
 
   .main-buttons {
     flex-direction: column;
-    gap: 16px;
+    gap: 20px;  /* more spacing */
   }
 
   button, .option-button {
     width: 100%;
     min-width: auto;
-    padding: 14px 24px;
+    padding: 20px 32px;     /* bigger padding */
+    font-size: 1.4rem;      /* bigger font */
   }
 
   h1 {
-    font-size: 1.7rem;
+    font-size: 2.2rem;      /* bigger heading */
   }
 
   h2 {
-    font-size: 1.3rem;
+    font-size: 1.8rem;      /* bigger subheading */
+  }
+
+  #question {
+    font-size: 2rem;        /* bigger question text */
+  }
+
+  ul#answers li.answer {
+    font-size: 1.4rem;      /* bigger answers */
+    padding: 18px 28px;
+  }
+
+  #nextButton {
+    padding: 20px 48px;
+    font-size: 1.6rem;
   }
 }
+
 
 /* Quiz section */
 #question {
