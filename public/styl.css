@@ -1,0 +1,283 @@
+/* Base styles */
+body {
+  background: linear-gradient(135deg, #3b82f6, #9333ea);
+  color: white;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  margin: 0;
+  min-height: 95vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.quiz_container {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 30px 40px;
+  border-radius: 12px;
+  max-width: 720px;         /* limit width on large screens */
+  width: 100%;
+  box-shadow: 0 0 20px rgba(147, 51, 234, 0.7);
+  text-align: center;
+  margin: 40px auto 40px auto;  /* centers horizontally */
+  box-sizing: border-box;
+}
+
+/* Headings */
+h1 a {
+  text-decoration: none;
+  color: white;
+}
+
+h1 {
+  margin-bottom: 30px;
+  font-weight: 700;
+  font-size: 2.5rem;
+  cursor: pointer;
+}
+
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+/* Footer */
+footer {
+  margin-top: auto;
+  padding: 20px 0;
+  text-align: center;
+  font-size: 16px;
+  color: #ccc;
+}
+
+footer a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* Main buttons container on index.html */
+.main-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;   /* center buttons */
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+/* Option buttons container for categories/difficulty */
+.options-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  margin-bottom: 40px;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+/* Buttons and option buttons */
+button, .option-button {
+  background: linear-gradient(90deg, #7f00ff, #e100ff);
+  border: none;
+  color: white;
+  font-weight: 700;
+  padding: 16px 36px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 1.2s ease, transform 1.2s ease;
+  box-shadow: 0 4px 10px rgba(127, 0, 255, 0.4);
+  user-select: none;
+  font-size: 1.2rem;
+  min-width: 180px;
+  max-width: 100%;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+/* Hover with slower smoother animation */
+button:hover, .option-button:hover {
+  background: linear-gradient(90deg, #e100ff, #7f00ff);
+  box-shadow: 0 6px 14px rgba(225, 0, 255, 0.6);
+  transform: scale(1.05);
+}
+
+/* Disabled start game button style: lighter version of button instead of gray */
+button:disabled {
+  background: linear-gradient(90deg, #bfa0ff, #e7b7ff);
+  color: #f0eaff;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Option buttons */
+.option-button {
+  min-width: 160px;
+  text-align: center;
+}
+
+/* Selected option button highlight */
+.option-button.selected {
+  box-shadow: 0 0 14px 4px rgba(255, 255, 255, 0.85);
+  border: 3px solid white;
+}
+
+/* Responsive layout */
+@media (max-width: 720px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  button, .option-button {
+    min-width: 140px;
+    padding: 14px 28px;
+    font-size: 1.1rem;
+  }
+
+  .quiz_container {
+    padding: 25px 30px;
+    margin: 30px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .options-group {
+    flex-direction: column;
+    gap: 20px;  /* more spacing */
+  }
+
+  .main-buttons {
+    flex-direction: column;
+    gap: 20px;  /* more spacing */
+  }
+
+  button, .option-button {
+    width: 100%;
+    min-width: auto;
+    padding: 20px 32px;     /* bigger padding */
+    font-size: 1.4rem;      /* bigger font */
+  }
+
+  h1 {
+    font-size: 2.2rem;      /* bigger heading */
+  }
+
+  h2 {
+    font-size: 1.8rem;      /* bigger subheading */
+  }
+
+  #question {
+    font-size: 2rem;        /* bigger question text */
+  }
+
+  ul#answers li.answer {
+    font-size: 1.4rem;      /* bigger answers */
+    padding: 18px 28px;
+  }
+
+  #nextButton {
+    padding: 20px 48px;
+    font-size: 1.6rem;
+  }
+}
+
+
+/* Quiz section */
+#question {
+  font-size: 1.7rem;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+ul#answers {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto 30px auto;
+  max-width: 460px;
+}
+
+li.answer {
+  background: #ffffff33;
+  margin-bottom: 16px;
+  padding: 16px 24px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+  user-select: none;
+  transition: background-color 0.35s ease, color 0.35s ease;
+  max-width: 460px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.2rem;
+  box-sizing: border-box;
+}
+
+li.answer:hover:not(.disabled) {
+  background: #ffffff66;
+}
+
+li.answer.disabled {
+  pointer-events: none;
+  cursor: default;
+  opacity: 0.7;
+  color: rgba(255, 255, 255, 0.9); /* darken text only slightly */
+}
+
+li.answer.correct {
+  background-color: #22c55e !important; /* green */
+  color: white;
+  font-weight: 800;
+}
+
+li.answer.incorrect {
+  background-color: #ef4444 !important; /* red */
+  color: white;
+  font-weight: 800;
+}
+
+/* Next button */
+#nextButton {
+  margin-top: 25px;
+  padding: 16px 40px;
+  font-size: 20px;
+  border-radius: 10px;
+  display: none;
+  background: linear-gradient(90deg, #7f00ff, #e100ff);
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(127, 0, 255, 0.5);
+  transition: background 1.2s ease, transform 1.2s ease;
+}
+
+#nextButton:hover {
+  background: linear-gradient(90deg, #e100ff, #7f00ff);
+  box-shadow: 0 6px 16px rgba(225, 0, 255, 0.7);
+  transform: scale(1.05);
+}
+
+/* End buttons container */
+#endButtons {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+/* Score display */
+#scoreDisplay {
+  font-size: 1.5rem;
+  margin-top: 25px;
+  font-weight: 700;
+  color: #ddd;
+}
