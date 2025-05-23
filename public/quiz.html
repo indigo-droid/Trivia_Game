@@ -2,18 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Quick Game</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Quiz</title>
+  <link rel="stylesheet" href="public/style.css" />
 </head>
 <body>
   <div class="quiz_container">
     <h1><a href="index.html">Trivia Quiz</a></h1>
     <h2 id="question">Loading question...</h2>
-
     <ul id="answers"></ul>
     <button id="nextButton">Next</button>
+    <div id="endButtons" style="display:none;">
+      <button onclick="location.href='quiz.html'">Start New Quick Game</button>
+      <button onclick="location.href='categorygame.html'">Select Category</button>
+    </div>
     <p id="scoreDisplay" style="display:none;"></p>
   </div>
+
+  <footer>
+    Powered by <a href="https://the-trivia-api.com" target="_blank">The Trivia API</a>
+  </footer>
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
@@ -33,40 +40,28 @@
       const answersEl = document.getElementById("answers");
       const nextButton = document.getElementById("nextButton");
       const scoreDisplay = document.getElementById("scoreDisplay");
-
-      function clearAnswers() {
-        answersEl.innerHTML = "";
-      }
+      const endButtons = document.getElementById("endButtons");
 
       function showQuestion() {
-        clearAnswers();
         const q = questions[currentIndex];
         questionEl.textContent = q.question.text;
+        answersEl.innerHTML = "";
 
-        // Shuffle answers
         const answers = [...q.incorrectAnswers, q.correctAnswer].sort(() => Math.random() - 0.5);
-
         answers.forEach(answer => {
           const li = document.createElement("li");
           li.textContent = answer;
-          li.classList.add("answer");
+          li.className = "answer";
           li.onclick = () => {
-            [...answersEl.children].forEach(child => {
-              child.classList.add("disabled");
-              child.onclick = null; // disable further clicks
-            });
-
+            document.querySelectorAll(".answer").forEach(el => el.classList.add("disabled"));
             if (answer === q.correctAnswer) {
               li.classList.add("correct");
               score++;
             } else {
               li.classList.add("incorrect");
-              for (const child of answersEl.children) {
-                if (child.textContent === q.correctAnswer) {
-                  child.classList.add("correct");
-                  break;
-                }
-              }
+              [...answersEl.children].forEach(child => {
+                if (child.textContent === q.correctAnswer) child.classList.add("correct");
+              });
             }
             nextButton.style.display = "inline-block";
           };
@@ -83,7 +78,8 @@
           answersEl.innerHTML = "";
           nextButton.style.display = "none";
           scoreDisplay.style.display = "block";
-          scoreDisplay.textContent = "Refresh the page or go back to start a new game.";
+          scoreDisplay.textContent = "Well done!";
+          endButtons.style.display = "flex";
         } else {
           showQuestion();
         }
@@ -93,15 +89,14 @@
         .then(res => res.json())
         .then(data => {
           questions = data;
-          if (questions.length === 0) {
-            questionEl.textContent = "No questions found for this category/difficulty.";
+          if (!questions.length) {
+            questionEl.textContent = "No questions found.";
             return;
           }
           showQuestion();
         })
-        .catch(err => {
+        .catch(() => {
           questionEl.textContent = "Failed to load questions.";
-          console.error(err);
         });
     });
   </script>

@@ -1,10 +1,43 @@
 /* Body with blue-purple gradient and white text for good contrast */
 body {
-  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  background: linear-gradient(135deg, #3b82f6, #9333ea);
   min-height: 100vh;
   margin: 0;
   font-family: Arial, sans-serif;
   color: #f0f0f5; /* light off-white for better readability */
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Container for the whole quiz and selection pages */
+.quiz_container {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 25px 30px;
+  border-radius: 12px;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 0 20px rgba(147, 51, 234, 0.7);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* Title styling */
+.quiz_container h1 {
+  cursor: pointer;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+.quiz_container h1 a {
+  text-decoration: none;
+  color: white;
 }
 
 /* Button styles: vibrant purple-blue gradient with subtle shadow */
@@ -16,7 +49,7 @@ button, .option-button, .QuizButton {
   padding: 12px 24px;
   border-radius: 8px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background 0.6s ease;
   box-shadow: 0 4px 8px rgba(127, 0, 255, 0.4);
   user-select: none;
 }
@@ -24,6 +57,7 @@ button, .option-button, .QuizButton {
 button:hover, .option-button:hover, .QuizButton:hover {
   background: linear-gradient(90deg, #e100ff, #7f00ff);
   box-shadow: 0 6px 12px rgba(225, 0, 255, 0.6);
+  transition: background 0.6s ease;
 }
 
 /* Option button flex container for category and difficulty */
@@ -52,17 +86,6 @@ button:hover, .option-button:hover, .QuizButton:hover {
   }
 }
 
-/* Container for the whole selection page with Start button at bottom */
-.quiz_container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  padding: 30px 20px;
-  box-sizing: border-box;
-  align-items: center;
-  justify-content: flex-start;
-}
-
 /* Push Start button to bottom of container */
 #startGame {
   margin-top: auto;
@@ -70,107 +93,12 @@ button:hover, .option-button:hover, .QuizButton:hover {
   font-size: 18px;
 }
 
-/* Question and answer styling remains consistent */
+/* Question styling */
 #question {
   margin-bottom: 20px;
   font-weight: 700;
   font-size: 24px;
-}
-
-.answer {
-  padding: 12px;
-  margin: 5px auto;
-  background-color: rgba(255 255 255 / 0.15);
-  border-radius: 8px;
-  cursor: pointer;
-  max-width: 400px;
-  list-style-type: none;
-  transition: background-color 0.3s;
-}
-
-.answer:hover:not(.disabled) {
-  background-color: rgba(255 255 255 / 0.3);
-}
-
-/* Correct & Incorrect answer colors */
-.answer.correct {
-  background-color: #4ade80; /* green */
-  color: #064e3b;
-  font-weight: 700;
-}
-
-.answer.incorrect {
-  background-color: #f87171; /* red */
-  color: #7f1d1d;
-  font-weight: 700;
-}
-
-/* Disabled answers can't be clicked */
-.disabled {
-  pointer-events: none;
-  opacity: 0.7;
-}
-
-/* Next button styling */
-#nextButton {
-  margin-top: 20px;
-  padding: 12px 30px;
-  font-size: 18px;
-  border-radius: 8px;
-  display: none;
-  background: linear-gradient(90deg, #7f00ff, #e100ff);
-  color: white;
-  cursor: pointer;
-  box-shadow: 0 4px 8px rgba(127, 0, 255, 0.4);
-  transition: background 0.3s ease;
-}
-
-#nextButton:hover {
-  background: linear-gradient(90deg, #e100ff, #7f00ff);
-  box-shadow: 0 6px 12px rgba(225, 0, 255, 0.6);
-}
-
-/* Background gradient and general body styling */
-body {
-  /* Blue to purple fade background */
-  background: linear-gradient(135deg, #3b82f6, #9333ea);
-  color: white;
-  font-family: Arial, sans-serif;
-  padding: 20px;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  margin: 0;
-}
-
-/* Quiz container */
-.quiz_container {
-  background: rgba(0, 0, 0, 0.5);
-  padding: 25px 30px;
-  border-radius: 12px;
-  max-width: 600px;
-  width: 100%;
-  box-shadow: 0 0 20px rgba(147, 51, 234, 0.7);
-  text-align: center;
-}
-
-/* Title styling */
-.quiz_container h1 {
-  cursor: pointer;
-  margin-bottom: 30px;
-  font-weight: 700;
-}
-
-.quiz_container h1 a {
-  text-decoration: none;
-  color: white;
-}
-
-/* Question text */
-#question {
   font-size: 1.3rem;
-  margin-bottom: 20px;
 }
 
 /* Answers list */
@@ -189,6 +117,9 @@ li.answer {
   cursor: pointer;
   font-weight: 600;
   user-select: none;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
   transition: background 0.3s;
 }
 
@@ -196,23 +127,47 @@ li.answer:hover:not(.disabled) {
   background: #ffffff66;
 }
 
-li.answer.disabled {
-  cursor: default;
+/* Disabled answers can't be clicked */
+.disabled {
   pointer-events: none;
+  opacity: 0.7;
+  cursor: default;
 }
 
-/* Correct and incorrect answers */
-li.answer.correct {
+/* Correct & Incorrect answer colors */
+.answer.correct, li.answer.correct {
   background-color: #22c55e !important; /* green */
   color: white;
+  font-weight: 700;
 }
 
-li.answer.incorrect {
+.answer.incorrect, li.answer.incorrect {
   background-color: #ef4444 !important; /* red */
   color: white;
+  font-weight: 700;
 }
 
-/* Next and Restart buttons */
+/* Next button styling */
+#nextButton {
+  margin-top: 20px;
+  padding: 12px 30px;
+  font-size: 18px;
+  border-radius: 8px;
+  display: none;
+  background: linear-gradient(90deg, #7f00ff, #e100ff);
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(127, 0, 255, 0.4);
+  transition: background 0.6s ease;
+}
+
+#nextButton:hover {
+  background: linear-gradient(90deg, #e100ff, #7f00ff);
+  box-shadow: 0 6px 12px rgba(225, 0, 255, 0.6);
+  transition: background 0.6s ease;
+}
+
+/* Next and Restart buttons (used at quiz end) */
 button#nextBtn,
 button#restartBtn {
   margin-top: 20px;
@@ -224,7 +179,7 @@ button#restartBtn {
   font-weight: 700;
   cursor: pointer;
   box-shadow: 0 4px 12px rgba(225, 0, 255, 0.5);
-  transition: background 0.3s ease;
+  transition: background 0.6s ease;
 }
 
 button#nextBtn:hover,
@@ -232,6 +187,7 @@ button#restartBtn:hover {
   background: linear-gradient(90deg, #e100ff, #7f00ff);
 }
 
+/* Disabled buttons styling */
 button#nextBtn:disabled {
   background: gray;
   cursor: not-allowed;
