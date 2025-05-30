@@ -16,7 +16,7 @@ body {
   background: rgba(0, 0, 0, 0.5);
   padding: 30px 40px;
   border-radius: 12px;
-  max-width: 720px;         /* limit width on large screens */
+  max-width: 900px;         /* limit width on large screens */
   width: 100%;
   box-shadow: 0 0 20px rgba(147, 51, 234, 0.7);
   text-align: center;
@@ -283,8 +283,16 @@ li.answer.incorrect {
 }
 
 #calcScore {
-  font-size: 1.5rem;
-  margin-left: 30px;
+  font-size: 1.2rem;
   justify-content: end;
   color: #dddddddd;
+}
+
+#questionContainer{
+  display: inline-block
+}
+
+.questionItem{
+  justify-content: center;
+
 }

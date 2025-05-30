@@ -8,14 +8,17 @@
 <body>
   <div class="quiz_container">
     <h1><a href="index.html">Trivia Quiz</a></h1>
-    <h2 id="question">Loading question...</h2>
+    <div id = "questionContainer">
+      <h2 class="Questionitem" id="question">Loading question...</h2>
+      <p class="Questionitem" id="calcScore">Score: <span id="score"></span></p>
+    </div>
     <ul id="answers"></ul>
     <button id="nextButton">Next</button>
     <div id="endButtons" style="display:none;">
       <button onclick="location.href='quiz.html'">Start New Quick Game</button>
       <button onclick="location.href='categorygame.html'">Select Category</button>
     </div>
-    <p id="calcScore">Score: <span id="score"></span></p>
+    
     <p id="scoreDisplay" style="display:none;"></p>
   </div>
 
