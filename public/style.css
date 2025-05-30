@@ -283,10 +283,7 @@ li.answer.incorrect {
 }
 
 #calcScore {
-  margin-top : 20px;
-  margin-right: 20px;
   font-size: 1.2rem;
-  margin-top: 15px;
   justify-content: end;
   color: #dddddddd;
 }
