@@ -15,7 +15,7 @@
       <button onclick="location.href='quiz.html'">Start New Quick Game</button>
       <button onclick="location.href='categorygame.html'">Select Category</button>
     </div>
-    <p id="calcScore"> Score: <span id="score"></span></p>
+    <p id="calcScore" style="display:none"> Score: <span id="score"></span></p>
     <p id="scoreDisplay" style="display:none;"></p>
   </div>
 
@@ -111,6 +111,7 @@
           scoreDisplay.style.display = "block";
           scoreDisplay.textContent = message;
           endButtons.style.display = "flex";
+          scoreEl.style.display = "block";
         } else {
           showQuestion();
         }
