@@ -15,6 +15,7 @@
       <button onclick="location.href='quiz.html'">Start New Quick Game</button>
       <button onclick="location.href='categorygame.html'">Select Category</button>
     </div>
+    <p id="calcScore"> Score: <span id="score"></span></p>
     <p id="scoreDisplay" style="display:none;"></p>
   </div>
 
@@ -35,12 +36,14 @@
       let questions = [];
       let currentIndex = 0;
       let score = 0;
+      let questionscore = 0;
 
       const questionEl = document.getElementById("question");
       const answersEl = document.getElementById("answers");
       const nextButton = document.getElementById("nextButton");
       const scoreDisplay = document.getElementById("scoreDisplay");
       const endButtons = document.getElementById("endButtons");
+      const scoreEl = document.getElementById("score");
 
       function showQuestion() {
         const q = questions[currentIndex];
@@ -57,6 +60,18 @@
             if (answer === q.correctAnswer) {
               li.classList.add("correct");
               score++;
+              switch(q.difficulty){
+                case "easy":
+                  questionscore += 10;
+                  break;
+                case "medium":
+                  questionscore += 20;
+                  break;
+                case "hard":
+                  questionscore += 30;
+                  break;
+              }
+              scoreEl.textContent = questionscore;
             } else {
               li.classList.add("incorrect");
               [...answersEl.children].forEach(child => {
@@ -74,7 +89,7 @@
       nextButton.onclick = () => {
         currentIndex++;
         if (currentIndex >= questions.length) {
-          questionEl.textContent = `Quiz completed! Your score: ${score} / ${questions.length}`;
+          questionEl.textContent = `Quiz completed! You answered correctly: ${score} / ${questions.length}`;
 
           let message = "";
           const percentage = (score / questions.length) * 100;
