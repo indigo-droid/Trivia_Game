@@ -141,23 +141,7 @@
         scoreDisplay.textContent = message;
         endButtons.style.display = "flex";
 
-        // 🎯 Prompt user for name and save score
-        const playerName = prompt("Enter your name to save your score:");
-        if (playerName && playerName.trim() !== "") {
-          try {
-            await fetch("/api/highscore", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ name: playerName.trim(), score }),
-            });
-          } catch (e) {
-            console.error("Failed to save score", e);
-          }
-        }
-      } else {
-        showQuestion();
-      }
-    };
+
 
     fetch(apiURL)
       .then(res => res.json())
