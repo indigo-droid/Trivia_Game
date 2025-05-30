@@ -16,7 +16,7 @@ body {
   background: rgba(0, 0, 0, 0.5);
   padding: 30px 40px;
   border-radius: 12px;
-  max-width: 720px;         /* limit width on large screens */
+  max-width: 950px;         /* limit width on large screens */
   width: 100%;
   box-shadow: 0 0 20px rgba(147, 51, 234, 0.7);
   text-align: center;
@@ -294,4 +294,5 @@ li.answer.incorrect {
 
 .questionItem{
   justify-content: center;
+
 }
