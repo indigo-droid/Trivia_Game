@@ -281,3 +281,9 @@ li.answer.incorrect {
   font-weight: 700;
   color: #ddd;
 }
+
+#calcScore {
+  font-size: 1.2rem;
+  justify-content: end;
+  color: #dddddddd;
+}
