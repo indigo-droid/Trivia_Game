@@ -44,6 +44,7 @@
       const scoreDisplay = document.getElementById("scoreDisplay");
       const endButtons = document.getElementById("endButtons");
       const scoreEl = document.getElementById("score");
+      const calcScore = document.getElementById("calcScore");
 
       function showQuestion() {
         const q = questions[currentIndex];
@@ -110,8 +111,9 @@
           nextButton.style.display = "none";
           scoreDisplay.style.display = "block";
           scoreDisplay.textContent = message;
+          calcScore.style.display = "block";
           endButtons.style.display = "flex";
-          scoreEl.style.display = "block";
+          
         } else {
           showQuestion();
         }
