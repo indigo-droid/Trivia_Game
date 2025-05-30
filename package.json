@@ -5,6 +5,7 @@
         "dev": "vercel dev"
     },
     "dependencies": {
+        "@vercel/blob": "^1.1.1",
         "node-fetch": "^2.7.0"
     },
     "devDependencies": {
