@@ -143,8 +143,10 @@
         scoreDisplay.style.display = "block";
         scoreDisplay.textContent = message;
         endButtons.style.display = "flex";
-
-
+      } else {
+        showQuestion();
+      }
+    };
 
     fetch(apiURL)
       .then(res => res.json())
