@@ -284,8 +284,14 @@ li.answer.incorrect {
 
 #calcScore {
   font-size: 1.5rem;
-  gap: 50px;
-  display: flex;
   justify-content: end;
   color: #dddddddd;
+}
+
+#questionContainer{
+  display: inline-block
+}
+
+.questionItem{
+  justify-content: center;
 }
