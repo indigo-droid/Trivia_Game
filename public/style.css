@@ -284,7 +284,7 @@ li.answer.incorrect {
 
 #calcScore {
   font-size: 1.5rem;
-  margin-left: auto;
+  margin-left: 30px;
   justify-content: end;
   color: #dddddddd;
 }
