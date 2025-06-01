@@ -280,6 +280,7 @@ li.answer.incorrect {
   margin-top: 25px;
   font-weight: 700;
   color: #ddd;
+  padding-bottom: 10px;
 }
 
 #calcScore {
