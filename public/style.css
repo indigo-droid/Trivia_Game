@@ -13,8 +13,13 @@ body {
 }
 
 .option-grid {
-  padding: 5% 5% 5% 5%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px; /* increase this value to add more space between buttons */
+  padding: 5%;
 }
+
 
 .quiz_container {
   background: rgba(0, 0, 0, 0.5);
