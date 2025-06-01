@@ -321,6 +321,6 @@ li.answer.incorrect {
 
 }
 
-.HighScoreButton {
+#HighScoreButton {
   margin-top: 50px;
 }
