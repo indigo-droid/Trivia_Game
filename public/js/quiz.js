@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
         questionEl.textContent = "No questions found.";
         return;
       }
-      scoreDisplay.style.display = "block"; // 👈 Make score visible
+      scoreDisplay.style.visibility = "visible"; // 👈 Make score visible
       scoreEl.textContent = questionscore;   // 👈 Show initial score (0)
       showQuestion();
     })
