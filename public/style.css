@@ -331,3 +331,75 @@ li.answer.incorrect {
 #HighscoreButton {
   margin-top: 50px;
 }
+
+/* MOBILE FIRST ADJUSTMENTS FOR VERY SMALL DEVICES */
+
+@media (max-width: 380px) {
+  body {
+    padding: 10px;
+  }
+
+  .quiz_container {
+    padding: 20px;
+    margin: 20px 10px;
+    border-radius: 10px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+    margin-bottom: 16px;
+  }
+
+  button, .option-button {
+    padding: 12px 24px;
+    font-size: 1rem;
+    min-width: 120px;
+    width: 100%;
+    max-width: 250px;
+  }
+
+  .option-grid,
+  .main-buttons,
+  .options-group {
+    flex-direction: column !important;
+    gap: 12px;
+    align-items: stretch;
+  }
+
+  ul#answers li.answer {
+    padding: 14px 20px;
+    font-size: 1.1rem;
+  }
+
+  #question {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+  }
+
+  #nextButton {
+    font-size: 1.2rem;
+    padding: 14px 28px;
+    width: 100%;
+    max-width: 250px;
+  }
+
+  #endButtons {
+    gap: 16px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #scoreDisplay {
+    font-size: 1.3rem;
+    margin-top: 20px;
+  }
+
+  footer {
+    font-size: 14px;
+    padding: 12px 0;
+  }
+}
