@@ -18,6 +18,141 @@
     Powered by <a href="https://the-trivia-api.com" target="_blank">The Trivia API</a>
   </footer>
 
-  <script type="module" src="./js/quiz.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const params = new URLSearchParams(window.location.search);
+    const category = params.get("category");
+    const difficulty = params.get("difficulty");
+
+    let apiURL = `https://the-trivia-api.com/v2/questions?limit=10`;
+    if (category) apiURL += `&categories=${category}`;
+    if (difficulty) apiURL += `&difficulty=${difficulty}`;
+
+      let questions = [];
+      let currentIndex = 0;
+      let score = 0;
+      let questionscore = 0;
+
+      const questionEl = document.getElementById("question");
+      const answersEl = document.getElementById("answers");
+      const nextButton = document.getElementById("nextButton");
+      const scoreDisplay = document.getElementById("scoreDisplay");
+      const endButtons = document.getElementById("endButtons");
+      const scoreEl = document.getElementById("score");
+      const calcScore = document.getElementById("calcScore");
+
+    function showQuestion() {
+      const q = questions[currentIndex];
+      questionEl.textContent = q.question.text;
+      answersEl.innerHTML = "";
+
+        const answers = [...q.incorrectAnswers, q.correctAnswer].sort(() => Math.random() - 0.5);
+        answers.forEach(answer => {
+          const li = document.createElement("li");
+          li.textContent = answer;
+          li.className = "answer";
+          li.onclick = () => {
+            document.querySelectorAll(".answer").forEach(el => el.classList.add("disabled"));
+            if (answer === q.correctAnswer) {
+              li.classList.add("correct");
+              score++;
+              switch(q.difficulty){
+                case "easy":
+                  questionscore += 10;
+                  break;
+                case "medium":
+                  questionscore += 20;
+                  break;
+                case "hard":
+                  questionscore += 30;
+                  break;
+              }
+              scoreEl.textContent = questionscore;
+            } else {
+              li.classList.add("incorrect");
+              [...answersEl.children].forEach(child => {
+                if (child.textContent === q.correctAnswer) child.classList.add("correct");
+              });
+              scoreEl.textContent = questionscore;
+            }
+            nextButton.style.display = "inline-block";
+          };
+          answersEl.appendChild(li);
+        });
+
+        nextButton.style.display = "none";
+    }
+
+      
+      nextButton.onclick = () => {
+        currentIndex++;
+        if (currentIndex >= questions.length) {
+          questionEl.textContent = `Quiz completed! You answered correctly: ${score} / ${questions.length}`;
+
+          let message = "";
+          const percentage = (score / questions.length) * 100;
+
+          if (percentage === 100) {
+            message = "🎉 Perfect score! You're a trivia master!";
+          } else if (percentage >= 80) {
+            message = "🔥 Great job! You really know your stuff!";
+          } else if (percentage >= 50) {
+            message = "🙂 Not bad! A bit more practice and you’ll ace it!";
+          } else {
+            li.classList.add("incorrect");
+            [...answersEl.children].forEach(child => {
+              if (child.textContent === q.correctAnswer) child.classList.add("correct");
+            });
+          }
+          nextButton.style.display = "inline-block";
+        };
+        answersEl.appendChild(li);
+      };
+
+      nextButton.style.display = "none";
+    
+
+    nextButton.onclick = async () => {
+      currentIndex++;
+      if (currentIndex >= questions.length) {
+        questionEl.textContent = `Quiz completed! Your score: ${score} / ${questions.length}`;
+
+        const percentage = (score / questions.length) * 100;
+        let message = "";
+
+        if (percentage === 100) {
+          message = "🎉 Perfect score! You're a trivia master!";
+        } else if (percentage >= 80) {
+          message = "🔥 Great job! You really know your stuff!";
+        } else if (percentage >= 50) {
+          message = "🙂 Not bad! A bit more practice and you’ll ace it!";
+        } else {
+          message = "😅 Keep trying! Trivia takes time to master.";
+        }
+
+        answersEl.innerHTML = "";
+        nextButton.style.display = "none";
+        scoreDisplay.style.display = "block";
+        scoreDisplay.textContent = message;
+        endButtons.style.display = "flex";
+
+
+
+    fetch(apiURL)
+      .then(res => res.json())
+      .then(data => {
+        questions = data;
+        if (!questions.length) {
+          questionEl.textContent = "No questions found.";
+          return;
+        }
+        showQuestion();
+      })
+      .catch(() => {
+        questionEl.textContent = "Failed to load questions.";
+      });
+  });
+</script>
+
 </body>
 </html>
