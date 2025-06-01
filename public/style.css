@@ -297,3 +297,7 @@ li.answer.incorrect {
   justify-content: center;
 
 }
+
+.HighScoreButton {
+  margin-top: 20%;
+}

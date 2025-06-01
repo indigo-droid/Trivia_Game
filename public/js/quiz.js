@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
           switch (q.difficulty) {
             case "easy": questionscore += 10; break;
             case "medium": questionscore += 20; break;
-            case "hard": questionscore += 30; break;
+            case "hard": questionscore += 50; break;
             scoreEl.textContent = questionscore;
           }
         } else {
