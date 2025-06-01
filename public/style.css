@@ -16,9 +16,10 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 24px; /* increase this value to add more space between buttons */
+  gap: 20px;  /* Default gap for medium/large screens */
   padding: 5%;
 }
+
 
 
 .quiz_container {
@@ -143,6 +144,10 @@ button:disabled {
     font-size: 2rem;
   }
 
+.option-grid {
+    gap: 16px;
+  }
+
   h2 {
     font-size: 1.5rem;
   }
@@ -165,6 +170,12 @@ button:disabled {
     gap: 20px;  /* more spacing */
   }
 
+  .option-grid {
+    flex-direction: column;
+    gap: 24px;
+    padding: 10% 5%;
+  }
+  
   .main-buttons {
     flex-direction: column;
     gap: 20px;  /* more spacing */
