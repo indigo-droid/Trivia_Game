@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Highscores</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="quiz_container">
+    <h1><a href="index.html">Trivia Quiz</a></h1>
+    <h2>🏆 Top 20 Highscores</h2>
+    <ul id="highscoreList"></ul>
+    <button onclick="location.href='index.html'">Back to Home</button>
+  </div>
+  <footer>
+    Powered by <a href="https://the-trivia-api.com" target="_blank">The Trivia API</a>
+  </footer>
+
+  <script type="module">
+    import { getHighScores } from '../api/scores.js';
+
+    const highscoreList = document.getElementById("highscoreList");
+    const highscores = getHighScores();
+
+    highscores.forEach(entry => {
+      const li = document.createElement("li");
+      li.textContent = `${entry.name} — ${entry.score} pts (${entry.difficulty}) - ${new Date(entry.date).toLocaleDateString()}`;
+      li.style.marginBottom = "8px";
+      highscoreList.appendChild(li);
+    });
+  </script>
+</body>
+</html>

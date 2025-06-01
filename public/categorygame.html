@@ -1,76 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Select Category & Difficulty</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>Select Category</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="quiz_container">
     <h1><a href="index.html">Trivia Quiz</a></h1>
-
-    <h2>Select Category</h2>
-    <div id="category-options" class="options-group"></div>
+    <h2>Select a Category</h2>
+    <div id="category-options" class="option-grid"></div>
 
     <h2>Select Difficulty</h2>
-    <div id="difficulty-options" class="options-group"></div>
+    <div id="difficulty-options" class="option-grid"></div>
 
     <button id="startGame" disabled>Start Game</button>
   </div>
-
   <footer>
     Powered by <a href="https://the-trivia-api.com" target="_blank">The Trivia API</a>
   </footer>
 
-  <script>
-    const categories = [
-      { id: "arts_and_literature", name: "Arts & Literature" },
-      { id: "film_and_tv", name: "Film & TV" },
-      { id: "food_and_drink", name: "Food & Drink" },
-      { id: "general_knowledge", name: "General Knowledge" },
-      { id: "geography", name: "Geography" },
-      { id: "history", name: "History" },
-      { id: "music", name: "Music" },
-      { id: "science", name: "Science" },
-      { id: "society_and_culture", name: "Society & Culture" },
-      { id: "sport_and_leisure", name: "Sport & Leisure" }
-    ].sort((a, b) => a.name.localeCompare(b.name));
-
-    const difficulties = ["easy", "medium", "hard"].map(d => ({
-        id: d,
-        name: d.charAt(0).toUpperCase() + d.slice(1)
-    }));
-
-
-    let selectedCategory = null;
-    let selectedDifficulty = null;
-
-    function createOptionButtons(containerId, options, isCategory) {
-      const container = document.getElementById(containerId);
-      options.forEach(opt => {
-        const btn = document.createElement("button");
-        btn.textContent = opt.name;
-        btn.classList.add("option-button");
-        btn.onclick = () => {
-          [...container.children].forEach(child => child.classList.remove("selected"));
-          btn.classList.add("selected");
-          if (isCategory) selectedCategory = opt.id;
-          else selectedDifficulty = opt.id;
-          document.getElementById("startGame").disabled = !(selectedCategory && selectedDifficulty);
-        };
-        container.appendChild(btn);
-      });
-    }
-
-    createOptionButtons("category-options", categories, true);
-    createOptionButtons("difficulty-options", difficulties, false);
-
-    document.getElementById("startGame").onclick = () => {
-      const params = new URLSearchParams();
-      params.append("category", selectedCategory);
-      params.append("difficulty", selectedDifficulty);
-      window.location.href = "quiz.html?" + params.toString();
-    };
-  </script>
+  <script type="module" src="../api/categorygame.js"></script>
 </body>
 </html>
