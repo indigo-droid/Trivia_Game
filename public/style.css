@@ -34,6 +34,7 @@ body {
   text-align: center;
   margin: 40px auto 40px auto;  /* centers horizontally */
   box-sizing: border-box;
+  height: 500px;
 }
 
 /* Headings */
@@ -140,86 +141,7 @@ button:disabled {
   border: 3px solid white;
 }
 
-/* Responsive layout */
-@media (max-width: 768px) {
-  .main-buttons,
-  .option-grid {
-    flex-direction: column;
-    align-items: center;
-  }
-}
 
-@media (max-width: 720px) {
-  h1 {
-    font-size: 2rem;
-  }
-
-.option-grid {
-    gap: 16px;
-  }
-
-  h2 {
-    font-size: 1.5rem;
-  }
-
-  button, .option-button {
-    min-width: 140px;
-    padding: 14px 28px;
-    font-size: 1.1rem;
-  }
-
-  .quiz_container {
-    padding: 25px 30px;
-    margin: 30px 20px;
-  }
-}
-
-@media (max-width: 480px) {
-  .options-group {
-    flex-direction: column;
-    gap: 20px;  /* more spacing */
-  }
-
-  .option-grid {
-  flex-direction: column;  /* override for mobile */
-  align-items: center;
-  }
-
-  .main-buttons {
-    flex-direction: column;
-    gap: 20px;  /* more spacing */
-  }
-
-  button, .option-button {
-    width: 100%;
-    min-width: auto;
-    padding: 20px 32px;     /* bigger padding */
-    font-size: 1.4rem;    /* bigger font */
-    max-width: 300px;      
-  }
-
-  h1 {
-    font-size: 2.2rem;      /* bigger heading */
-  }
-
-  h2 {
-    font-size: 1.8rem;      /* bigger subheading */
-  }
-
-  #question {
-    font-size: 2rem;        /* bigger question text */
-  }
-
-  ul#answers li.answer {
-    font-size: 1.4rem;      /* bigger answers */
-    padding: 18px 28px;
-  }
-
-  #nextButton {
-    padding: 20px 48px;
-    font-size: 1.6rem;
-  }
-}
 
 
 /* Quiz section */
@@ -332,6 +254,98 @@ li.answer.incorrect {
   margin-top: 50px;
 }
 
+/* Responsive layout */
+@media (max-width: 1000px) {
+
+  .quiz_container {
+    max-width: 75%;
+    margin: 30px 20px;
+  }
+  .main-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-buttons,
+  .option-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 720px) {
+  h1 {
+    font-size: 2.5rem; /* slightly smaller heading */
+  }
+
+.option-grid {
+    gap: 16px;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  button, .option-button {
+    min-width: 140px;
+    padding: 14px 28px;
+    font-size: 1.1rem;
+  }
+
+  .quiz_container {
+    padding: 25px 30px;
+    margin: 30px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .options-group {
+    flex-direction: column;
+    gap: 20px;  /* more spacing */
+  }
+
+  .option-grid {
+  flex-direction: column;  /* override for mobile */
+  align-items: center;
+  }
+
+  .main-buttons {
+    flex-direction: column;
+    gap: 20px;  /* more spacing */
+  }
+
+  button, .option-button {
+    width: 100%;
+    min-width: auto;
+    padding: 20px 32px;     /* bigger padding */
+    font-size: 1.4rem;    /* bigger font */
+    max-width: 300px;      
+  }
+
+  h1 {
+    font-size: 2.2rem;      /* bigger heading */
+  }
+
+  h2 {
+    font-size: 1.8rem;      /* bigger subheading */
+  }
+
+  #question {
+    font-size: 2rem;        /* bigger question text */
+  }
+
+  ul#answers li.answer {
+    font-size: 1.4rem;      /* bigger answers */
+    padding: 18px 28px;
+  }
+
+  #nextButton {
+    padding: 20px 48px;
+    font-size: 1.6rem;
+  }
+}
 /* MOBILE FIRST ADJUSTMENTS FOR VERY SMALL DEVICES */
 
 @media (max-width: 380px) {
@@ -343,6 +357,7 @@ li.answer.incorrect {
     padding: 20px;
     margin: 20px 10px;
     border-radius: 10px;
+    max-width: 200px;
   }
 
   h1 {
