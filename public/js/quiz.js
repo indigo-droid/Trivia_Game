@@ -40,6 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
             case "easy": questionscore += 10; break;
             case "medium": questionscore += 20; break;
             case "hard": questionscore += 30; break;
+            scoreEl.textContent = questionscore;
           }
         } else {
           li.classList.add("incorrect");
@@ -105,9 +106,9 @@ document.addEventListener("DOMContentLoaded", () => {
         questionEl.textContent = "No questions found.";
         return;
       }
+      scoreDisplay.style.display = "block"; // 👈 Make score visible
+      scoreEl.textContent = questionscore;   // 👈 Show initial score (0)
       showQuestion();
     })
-    .catch(() => {
-      questionEl.textContent = "Failed to load questions.";
-    });
+
 });
