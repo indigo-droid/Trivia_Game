@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const restartBtn = document.createElement("button");
-    restartBtn.textContent = "Play Again";
+    restartBtn.textContent = "Quick Game";
     restartBtn.onclick = () => location.href = "quiz.html";
 
     const selectBtn = document.createElement("button");
