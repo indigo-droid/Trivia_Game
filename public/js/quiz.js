@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let apiURL = `https://the-trivia-api.com/v2/questions?limit=10`;
   if (category) apiURL += `&categories=${category}`;
-  if (difficulty) apiURL += `&difficulty=${difficulty}`;
+  if (difficulty) apiURL += `&difficulties=${difficulty}`;
 
   let questions = [];
   let currentIndex = 0;
